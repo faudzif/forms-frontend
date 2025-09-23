@@ -1,0 +1,11 @@
+node_modules/
+.idea/
+.DS_Store
+Thumbs.db
+app/en
+app/ar
+app/assets/css/
+app/assets/js/build/
+package-lock.json
+compressed-images
+dist

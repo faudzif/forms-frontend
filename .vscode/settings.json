@@ -1,0 +1,14 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": false,
+  "pugFormatter.fillTab": "yes",
+  "scss.validate": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.tabSize": 4
+  },
+  "pugFormatter.tabSize": 2,
+  "editor.formatOnSave": true,
+  "puglint.enable": true
+}

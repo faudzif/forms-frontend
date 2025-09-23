@@ -1,0 +1,11 @@
+doctype html
+html(lang=lang)
+	head
+		include layout_partials/head.pug
+	body(class=`${lang} body-bg`)
+		//- include header/header.pug
+		main
+			block content
+		//- include footer/footer.pug
+		include layout_partials/scripts.pug
+		block scripts

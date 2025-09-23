@@ -1,0 +1,63 @@
+meta(charset="UTF-8")
+meta(http-equiv="X-UA-Compatible" content="IE=edge")
+meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no")
+link(rel="shortcut icon" href=`${paths.img}/favicon.ico` type="image/x-icon")
+
+block pageTitle
+if lang=="en"
+	title #{title_en}
+	//- meta(name="description" content=desc_en)
+	//- meta(property="og:title" content=title_en)
+	//- meta(property="og:description" content=desc_en)
+	//- meta(property="og:type" content="website")
+	//- meta(property="og:url" content=link_en)
+	//- meta(property="twitter:card" content="summary_large_image")
+	//- meta(property="twitter:url" content=link_en)
+	//- meta(name="twitter:image" content="")
+	//- meta(property="og:image" content="")
+	//- meta(itemprop="image" content="")
+	//- meta(property="og:site_name" content=title_en)
+	//- meta(name="twitter:title" content=title_en)
+	//- meta(name="twitter:description" content=desc_en)
+else
+	title #{title_ar}
+	//- meta(name="description" content=desc_ar)
+	//- meta(property="og:title" content=title_ar)
+	//- meta(property="og:description" content=desc_ar)
+	//- meta(property="og:type" content="website")
+	//- meta(property="og:url" content=link_ar)
+	//- meta(property="twitter:card" content="summary_large_image")
+	//- meta(property="twitter:url" content=link_ar)
+	//- meta(name="twitter:image" content="")
+	//- meta(property="og:image" content="")
+	//- meta(itemprop="image" content="")
+	//- meta(property="og:site_name" content=title_ar)
+	//- meta(name="twitter:title" content=title_ar)
+	//- meta(name="twitter:description" content=desc_ar)
+
+link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet")
+
+if prod
+	if lang=="en"
+		link(rel="stylesheet" href=`${paths.css}/style.min.css?v=${version}`)
+	else
+		link(rel="stylesheet" href=`${paths.css}/style-ar.min.css?v=${version}`)
+else
+	if lang=="en"
+		link(rel="stylesheet" href=`${paths.css}/style.css?v=${version}`)
+		//- link(rel="stylesheet" href=`${paths.css}/color-blind.css?v=${version}`)
+	else
+		link(rel="stylesheet" href=`${paths.css}/style-ar.css?v=${version}`)
+include ../../includes/_mixins/_index.pug
+//- <link rel="preload" href="../assets/fonts/Seravek-ExtraLight.woff2" as="font" type="font/woff2" crossorigin>
+
+if lang === 'ar'
+	//- include google-translate.pug
+
+// Global site tag (gtag.js) - Google Analytics
+//- script(async="" src="https://www.googletagmanager.com/gtag/js?id=G-5C30KTTL9P")
+//- script.
+//- 	window.dataLayer = window.dataLayer || [];
+//- 	function gtag(){dataLayer.push(arguments);}
+//- 	gtag("js", new Date());
+//- 	gtag("config", "G-5C30KTTL9P");s

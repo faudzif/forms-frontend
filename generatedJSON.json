@@ -1,0 +1,249 @@
+[
+  {
+    "id": "dad86657-4cba-4734-aac5-c87108827026",
+    "type": "textField",
+    "label": {
+      "en": "Request Title:",
+      "ar": "Request Title: ar"
+    },
+    "placeholder": {
+      "en": "Placeholder Text - EN",
+      "ar": "Placeholder Text - AR"
+    },
+    "tooltip": {
+      "en": "Tooltip en",
+      "ar": "tooltip ar"
+    },
+    "validationConfig": {
+      "min": 10,
+      "max": 20,
+      "required": true,
+      "regex": "/^[a-zA-Zs]{2,50}$/"
+    },
+    "validationMessage": {
+      "en": "This is required",
+      "ar": "message ar"
+    }
+  },
+  {
+    "id": "6bf3be83-3fe7-4820-b25c-69db8aa2a9ac",
+    "type": "textArea",
+    "label": {
+      "en": "Request Description: ",
+      "ar": "Request Description: "
+    },
+    "placeholder": {
+      "en": "Request Description",
+      "ar": "Request Description"
+    },
+    "tooltip": {
+      "en": "Placeholder Text - EN",
+      "ar": "Placeholder Text - EN"
+    },
+    "validationConfig": {
+      "required": true,
+      "min": 10,
+      "max": 20
+    }
+  },
+  {
+    "id": "0113a663-8f4d-4166-8c45-c086f69f2ce8",
+    "type": "dropDown",
+    "label": {
+      "en": "Selecct the colors",
+      "ar": "Selecct the colors"
+    },
+    "placeholder": {
+      "en": "Services Related to",
+      "ar": "Services Related to"
+    },
+    "tooltip": {
+      "en": "Placeholder Text - EN",
+      "ar": "Placeholder Text - EN"
+    },
+    "validationConfig": {
+      "required": true
+    },
+    "options": [
+      {
+        "key": "red",
+        "value": {
+          "en": "red",
+          "ar": "red"
+        }
+      },
+      {
+        "key": "blue",
+        "value": {
+          "en": "blue",
+          "ar": "blue"
+        }
+      },
+      {
+        "key": "pink",
+        "value": {
+          "en": "pink",
+          "ar": "pink"
+        }
+      }
+    ]
+  },
+  {
+    "id": "0c268516-dcc5-4694-a43b-c3016fc0852f",
+    "type": "radio",
+    "label": {
+      "en": "Budget Required: ",
+      "ar": "Budget Required: "
+    },
+    "tooltip": {
+      "en": "Placeholder Text - EN",
+      "ar": "Placeholder Text - EN"
+    },
+    "validationConfig": {
+      "required": true
+    },
+    "radioName": "radio-5255ad20-5c08-4f76-ab14-483bb4321731",
+    "items": [
+      {
+        "key": "Yes",
+        "label": {
+          "en": "Yes",
+          "ar": "Yes"
+        }
+      },
+      {
+        "key": "No",
+        "label": {
+          "en": "No",
+          "ar": "No"
+        }
+      }
+    ]
+  },
+  {
+    "id": "307143eb-2414-4476-87b2-cc23406d53fa",
+    "type": "checkBoxes",
+    "label": {
+      "en": "Selecct the colors",
+      "ar": "Selecct the colors"
+    },
+    "tooltip": {
+      "en": "Placeholder Text - EN",
+      "ar": "Placeholder Text - EN"
+    },
+    "validationConfig": {
+      "required": true
+    },
+    "radioName": "checkBoxes-e8ea3904-2618-4052-8800-0ea723adb530",
+    "items": [
+      {
+        "key": "red",
+        "label": {
+          "en": "red",
+          "ar": "red"
+        }
+      },
+      {
+        "key": "blue",
+        "label": {
+          "en": "blue",
+          "ar": "blue"
+        }
+      },
+      {
+        "key": "pink",
+        "label": {
+          "en": "pink",
+          "ar": "pink"
+        }
+      }
+    ]
+  },
+  {
+    "id": "eb84216b-1eaa-4f7f-8818-5f60e5cc6f40",
+    "type": "datePicker",
+    "label": {
+      "en": "Upload files",
+      "ar": "Upload files"
+    },
+    "tooltip": {
+      "en": "Placeholder Text - EN",
+      "ar": "Placeholder Text - EN"
+    },
+    "validationConfig": {
+      "required": true
+    }
+  },
+  {
+    "id": "5fb9c971-d1e7-48c3-9e90-39409e9f764d",
+    "type": "fileAttachment",
+    "label": {
+      "en": "Upload files",
+      "ar": "Upload files"
+    },
+    "tooltip": {
+      "en": "Placeholder Text - EN",
+      "ar": "Placeholder Text - EN"
+    },
+    "validationConfig": {
+      "required": true
+    },
+    "extensions": "docx, pdf, jpg"
+  },
+  {
+    "id": "ee34f3b1-459f-4250-9279-014746798154",
+    "type": "heading",
+    "heading": {
+      "en": "Heading En",
+      "ar": "Heading Ar",
+      "tag": "h5"
+    }
+  },
+  {
+    "id": "992134e3-15ca-4a02-888e-9bcdef8a608b",
+    "type": "submitButton",
+    "submitButton": {
+      "en": "Submit",
+      "ar": "Submit"
+    },
+    "tooltip": {
+      "en": "Placeholder Text - EN",
+      "ar": "Placeholder Text - AR"
+    }
+  },
+  {
+    "id": "7b36fe8e-f821-4ebb-ad38-4569f51ce6ea",
+    "type": "cancelButton",
+    "cancelButton": {
+      "en": "Cancel",
+      "ar": "Cancel"
+    },
+    "tooltip": {
+      "en": "Placeholder Text - EN",
+      "ar": "Placeholder Text - EN"
+    }
+  },
+  {
+    "id": "77dd4070-b510-46c5-be84-291181de3f8a",
+    "type": "consentCheckbox",
+    "consent": {
+      "text": {
+        "en": "I consent to my personal data being processed according to the",
+        "ar": "I consent to my personal data being processed according to the"
+      },
+      "link": {
+        "text": {
+          "en": "processed according",
+          "ar": "processed according"
+        },
+        "url": {
+          "en": "https://www.google.com/",
+          "ar": "https://www.google.com/"
+        }
+      }
+    },
+    "validationConfig": {
+      "required": true
+    }
+  }
+]

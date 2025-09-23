@@ -1,0 +1,67 @@
+h1 Functions
+
+h2 Using Functions
+-
+	function isEven(n){
+		if(n % 2 === 0)
+			return true
+
+		return false;
+	}
+
+h2 Is 4 an even number : #{isEven(5)}
+
+h2 Dynamic tag from variable
+- tag = 'h3';
+
+#{tag} Dummy content in dynamic tag #{tag}
+
+h1 Using Tags in text
+h2 There are multiple ways to use tags in between text (see code for below paragraphs)
+
+p For rendering tags from inside strings use the following example like #[strong bold test] and #[em italic text].
+
+p For rendering tags from inside strings use the following example like <strong>bold test</strong> and <em>italic text</em>.
+
+p
+	| For rendering tags from inside strings use the following example
+	| like <strong>bold test</strong> and <em>italic text</em>.
+
+-
+	largeText = "For rendering tags from inside strings use the following example \
+	like <strong>bold test</strong> and <em>italic text</em>."
+
+p !{largeText}
+
+h1 Other Functionalities
+
+| <div class="container">
+| 	<div class="row">
+| 		<div class="col">
+|				<h3>Plain old html</h3>
+|			</div>
+|		</div>
+|	</div>
+
+h2 Using raw html method 2
+
+section.
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h3>Plain old html</h3>
+			</div>
+		</div>
+	</div>
+
+h2 Adding css to page
+
+style.
+	.test{
+		font-size: 20px;
+	}
+
+h2 Adding script to page
+
+script.
+	console.log('script ran');

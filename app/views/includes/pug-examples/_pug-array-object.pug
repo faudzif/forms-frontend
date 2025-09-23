@@ -1,0 +1,47 @@
+h1 Objects and arrays example
+
+h2 Looping through array
+
+ul
+	- var list = ["One", "Two", "Three","Four", "Fivr", "Six"]
+	each item,index in list
+		li #{index}: #{item}
+
+h2 Looping through array of objects
+
+-
+	var people = [
+		{
+			name: "Ali",
+			age: 20,
+		},
+		{
+			name: "Abdullah",
+			age: 22,
+		},
+		{
+			name: "Asad",
+			age: 22,
+		}
+	]
+
+each item in people
+	h2=item.name
+	h3=item.age
+
+h2 Looping through object properties
+
+-
+	var mobile = {
+		brand: "Samsung",
+		model: "Galaxy M30",
+		memory: "64GB",
+		ram: "4GB",
+		mainCamera: "13MP",
+		frontCamera: "5MP",
+	}
+
+h3 Features of #{mobile.brand} #{mobile.model}
+ul
+	each val, key in mobile
+		li= key + ': ' + val

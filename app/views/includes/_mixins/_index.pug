@@ -1,0 +1,813 @@
+//------- MIXIN USED FOR MODON START
+
+mixin button(text, type, className, hasFilled=false, secondary=false)
+	- var filledClass = hasFilled ? 'font-white border-color-white hover:!bg-white hover:!text-[#6E5540]' : ''
+	- var secondaryClass = secondary ? 'font-brown border-color-white bg-white hover:!bg-transparent hover:!text-white' : ''
+	button(type=type class=`button border font-brown border-color-brown rounded-lg px-4 py-2.5 hover:bg-[#6E5540] hover:text-white ${className+ ' ' + filledClass + ' ' + secondaryClass}`)=text
+
+mixin btn(text,href,iconName='', iconSize=16, cssClass='', secondaryBtn=false, noLink=false, btnSize='', submit=false)
+	- var fontColor = 'font-green'
+	- var secondary = secondaryBtn ? 'font-white' : 'bg-green hover:bg-lightGreen'
+	- var afterClass = secondaryBtn ? 'bg-white' : 'bg-green'
+	- var baseClass = `inline-flex items-center gap-1.5 relative text-white px-4 py-2 rounded font-medium text-sm no-underline ${fontColor} ${cssClass} ${secondary}`
+
+	if noLink
+		span(class=baseClass)= text
+			if iconName
+				i.material-symbols-outlined(style=`font-size: ${iconSize}px`, class='pointer-events-none rtl:rotate-[270deg]')= iconName
+	else if submit
+		button(type="submit" class=baseClass)= text
+			if iconName
+				i.material-symbols-outlined(style=`font-size: ${iconSize}px`, class='pointer-events-none rtl:rotate-[270deg]')= iconName
+	else
+		a(href=href class=`${baseClass} cursor-pointer`)= text
+			if iconName
+				i.material-symbols-outlined(style=`font-size: ${iconSize}px`, class='pointer-events-none rtl:rotate-[270deg]')= iconName
+
+mixin linkButton(text,iconName,iconSize,href,cssClass, secondaryBtn=false, noLink=false, fontBrown=false)
+	- var secondary = secondaryBtn ? 'font-white' : ''
+	- var afterClass = secondaryBtn ? 'bg-white' : 'bg-brown'
+	- var font = fontBrown ? "font-brown" : ""
+
+	if(noLink)
+		span(class=`inline-flex items-center gap-1.5 animated-underline relative font-brown font-medium text-sm no-underline ${cssClass+ ' ' + secondary}`)=text
+			i.material-symbols-outlined(style=`font-size: ${iconSize}px`, class=`rtl:rotate-[270deg]`)= iconName
+			em(class=`animated-line ${afterClass}`)
+	else if (fontBrown)
+		a(href=href class=`inline-flex items-center gap-1.5 animated-underline relative font-medium text-sm cursor-pointer no-underline ${cssClass+ ' ' + font}`)=text
+			i.material-symbols-outlined(style=`font-size: ${iconSize}px`, class=`rtl:rotate-[270deg]`)= iconName
+			em(class=`animated-line ${afterClass}`)
+	else
+		a(href=href class=`inline-flex items-center gap-1.5 animated-underline relative font-brown font-medium text-sm cursor-pointer no-underline ${cssClass+ ' ' + secondary}`)=text
+			i.material-symbols-outlined(style=`font-size: ${iconSize}px`, class=`rtl:rotate-[270deg]`)= iconName
+			em(class=`animated-line ${afterClass}`)
+
+mixin heading(title, headingTag, cssClass)
+	#{headingTag}(class=cssClass) !{title}
+
+mixin paragraph(text, cssClass)
+	p(class=cssClass) !{text}
+
+mixin arrowRightIcon(text,href,cssClass='')
+	a(href=href title=text class=` ${cssClass}`)=text
+		svg(width="11" height="10" viewBox="0 0 11 10" fill="none" xmlns="http://www.w3.org/2000/svg")
+			path(d="M10.0156 0.5V7.5C10.0156 7.78125 9.76562 8 9.51562 8C9.23438 8 9.01562 7.78125 9.01562 7.5V1.71875L0.859375 9.875C0.765625 9.96875 0.640625 10 0.515625 10C0.359375 10 0.234375 9.96875 0.140625 9.875C-0.046875 9.6875 -0.046875 9.34375 0.140625 9.15625L8.29688 1H2.48438C2.23438 1 1.98438 0.75 2.01562 0.5C2.01562 0.21875 2.23438 0 2.51562 0H9.51562C9.76562 0 10.0156 0.25 10.0156 0.5Z" fill="white")
+
+mixin breadcrumbs(arrb)
+	.breadcrumbs-wrapper
+		.container
+			.breadcrumbs
+				each itemb in arrb
+					a(class=`breadcrumbs__link` title=itemb.navText href=itemb.navLink) #{itemb.navText}
+
+mixin translate(en,ar)
+	if(lang === 'en')
+		!=en
+	else
+		!=ar?ar:en
+
+mixin img(src,alt,cssClass='', lazy=true)
+
+	if(lazy)
+		img(src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==', data-src=`${paths.img}/${src}`, alt=alt class=`lazy ${cssClass}` )
+	else
+		img(src=`${paths.img}/${src}`, alt=alt class=cssClass)
+
+mixin dualImg(srcDesktop,srcMob,alt,cssClass='',lazy = true)
+	if(lazy)
+		picture
+			source(media='(min-width:992px)' data-srcset=`${paths.img}/${srcDesktop}`)
+			img(data-src=`${paths.img}/${srcMob}`, alt=alt class=`lazy ${cssClass}`)
+	else
+		picture
+			source(media='(min-width:992px)' srcset=`${paths.img}/${srcDesktop}`)
+			img(src=`${paths.img}/${srcMob}`, alt=alt class=cssClass)
+
+mixin textButton(href,text,cssClass='')
+	a(href=href title=text class=`link ${cssClass}`)=text
+
+mixin arrowIcon(cssClass='')
+	svg(xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='23.002' height='23.004' viewbox='0 0 23.002 23.004' class=`${cssClass} arrow`)
+		defs
+			clippath.clip-path
+			rect(data-name='Rectangle 3621' width='23.002' height='23.004' transform='translate(0 0)' fill='none' stroke='#fff' stroke-width='1')
+		g#Group_13512(data-name='Group 13512' transform='translate(0 0)' clip-path='url(#clip-path)')
+			path.arrow__circle(data-name='Path 5459' d='M11.51,22.5A11,11,0,1,1,22.5,11.512,11,11,0,0,1,11.51,22.5Z' fill='none' stroke='#fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1')
+		path(data-name='Path 5460' d='M13.774,16.036,8.4,11.511l5.369-4.526' fill='none' stroke='#fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1')
+
+mixin input(title,type,id,cssClass='', readonly=false, disabled=false, required=false, dataAttrs={})
+	- readonly = Boolean(readonly)
+	- disabled = Boolean(disabled)
+	- required = Boolean(required)
+
+	input.form-control(
+		type=`${type}`, 
+		name=`${title}`, 
+		placeholder=`${title}`, 
+		id=`${id}`,
+		readonly=readonly,
+		disabled=disabled,
+		required=required,
+		class=`border border-[#C8C8C8] rounded px-3 py-2  w-full max-md:text-sm ${cssClass} ${disabled ? 'cursor-not-allowed opacity-50' : ''}`,
+		)&attributes(dataAttrs)
+
+mixin textarea(title, cssClass='', dataAttrs={})
+	textarea.form-control(
+		placeholder=`${title}`, 
+		class=`border border-[#C8C8C8] rounded px-3 py-2  w-full max-md:text-sm ${cssClass}`
+		)&attributes(dataAttrs)
+
+mixin customSelect(title,small,optArr)
+	.custom-select-simple
+		select(class=`form-control ${small ? 'form-control--small' : ''}` placeholder=`${title}`)
+			if(optArr)
+				each list in optArr
+					option #{list}
+			else
+				option #{title}
+				option 1
+				option 2
+				option 3
+
+mixin custom-switch(label, id, addClass='',dataValidation)
+	div(class=`flex gap-1 items-center ${addClass}`)
+		input(class="w-4 h-4" type='checkbox' id=id, data-validation-type=dataValidation)
+		label(class="text-sm whitespace-nowrap" for=id)=label
+
+mixin label(labelText, addClass='')
+	label(class=`md:text-md text-base font-medium leading-[150%] normal-case tracking-[1.5%] block pb-0 ${addClass}`) #{labelText}
+
+mixin phoneField(id)
+	link(rel="stylesheet" href="../assets/css/intlTelInput.css")
+	<input class="form-control" value='+971' placeholder="+971" id=#{id} name=#{id} class='' type="tel">
+
+mixin nationalitySelect(initValue, labelText, error)
+	label(class="md:text-md text-base  font-medium leading-[150%] normal-case tracking-[1.5%] block pb-[10px]") #{labelText}
+	div(class="relative border max-md:text-sm p-3 border-[#C8C8C8] custom-select rounded-md")
+		select(class="appearance-none")
+			-
+				countries =  [
+					{ NationalityID: +1, CountryCode: 'GB', Nationality: 'British' },
+					{ NationalityID: +34, CountryCode: 'AF', Nationality: 'Afghan' },
+					{ NationalityID: +35, CountryCode: 'AL', Nationality: 'Albanian' },
+					{ NationalityID: +36, CountryCode: 'DZ', Nationality: 'Algerian' },
+					{ NationalityID: +158, CountryCode: 'US', Nationality: 'American' },
+					{ NationalityID: +38, CountryCode: 'AD', Nationality: 'Andorran' },
+					{ NationalityID: +39, CountryCode: 'AO', Nationality: 'Angolan' },
+					{ NationalityID: +40, CountryCode: 'AM', Nationality: 'Armenian' },
+					{ NationalityID: +41, CountryCode: 'AT', Nationality: 'Austrian' },
+					{ NationalityID: +42, CountryCode: 'AZ', Nationality: 'Azerbaijani' },
+					{ NationalityID: +2, CountryCode: 'AR', Nationality: 'Argentinian' },
+					{ NationalityID: +3, CountryCode: 'AU', Nationality: 'Australian' },
+					{ NationalityID: +43, CountryCode: 'BH', Nationality: 'Bahraini' },
+					{ NationalityID: +44, CountryCode: 'BD', Nationality: 'Bangladeshi' },
+					{ NationalityID: +45, CountryCode: 'BB', Nationality: 'Barbadian' },
+					{ NationalityID: +46, CountryCode: 'BY', Nationality: 'Belarusian' },
+					{ NationalityID: +47, CountryCode: 'BZ', Nationality: 'Belizean' },
+					{ NationalityID: +48, CountryCode: 'BJ', Nationality: 'Beninese' },
+					{ NationalityID: +49, CountryCode: 'BM', Nationality: 'Bermudian' },
+					{ NationalityID: +50, CountryCode: 'BT', Nationality: 'Bhutanese' },
+					{ NationalityID: +51, CountryCode: 'BO', Nationality: 'Bolivian' },
+					{ NationalityID: +52, CountryCode: 'BA', Nationality: 'Bosnian' },
+					{ NationalityID: +53, CountryCode: 'BW', Nationality: 'Botswanan' },
+					{ NationalityID: +54, CountryCode: 'BG', Nationality: 'Bulgarian' },
+					{ NationalityID: +55, CountryCode: 'BF', Nationality: 'Burkinese' },
+					{ NationalityID: +56, CountryCode: 'BI', Nationality: 'Burundian' },
+					{ NationalityID: +7, CountryCode: 'CA', Nationality: 'Canadian' },
+					{ NationalityID: +8, CountryCode: 'CN', Nationality: 'Chinese' },
+					{ NationalityID: +9, CountryCode: 'CO', Nationality: 'Colombian' },
+					{ NationalityID: +10, CountryCode: 'CU', Nationality: 'Cuban' },
+					{ NationalityID: +57, CountryCode: 'KH', Nationality: 'Cambodian' },
+					{ NationalityID: +58, CountryCode: 'CM', Nationality: 'Cameroonian' },
+					{ NationalityID: +59, CountryCode: 'CV', Nationality: 'Cape Verdean' },
+					{ NationalityID: +60, CountryCode: 'TD', Nationality: 'Chadian' },
+					{ NationalityID: +61, CountryCode: 'CL', Nationality: 'Chilean' },
+					{ NationalityID: +62, CountryCode: 'CG', Nationality: 'Congolese' },
+					{ NationalityID: +63, CountryCode: 'CR', Nationality: 'Costa Rican' },
+					{ NationalityID: +64, CountryCode: 'HR', Nationality: 'Croat' },
+					{ NationalityID: +65, CountryCode: 'CY', Nationality: 'Cypriot' },
+					{ NationalityID: +66, CountryCode: 'CZ', Nationality: 'Czech' },
+					{ NationalityID: +67, CountryCode: 'DK', Nationality: 'Danish' },
+					{ NationalityID: +11, CountryCode: 'DO', Nationality: 'Dominican' },
+					{ NationalityID: +68, CountryCode: 'DJ', Nationality: 'Djiboutian' },
+					{ NationalityID: +69, CountryCode: 'DM', Nationality: 'Dominican' },
+					{ NationalityID: +26, CountryCode: 'NL', Nationality: 'Dutch' },
+					{ NationalityID: +12, CountryCode: 'EC', Nationality: 'Ecuadorean' },
+					{ NationalityID: +70, CountryCode: 'EG', Nationality: 'Egyptian' },
+					{ NationalityID: +71, CountryCode: 'ER', Nationality: 'Eritrean' },
+					{ NationalityID: +72, CountryCode: 'EE', Nationality: 'Estonian' },
+					{ NationalityID: +73, CountryCode: 'ET', Nationality: 'Ethiopian' },
+					{ NationalityID: +74, CountryCode: 'FJ', Nationality: 'Fijian' },
+					{ NationalityID: +75, CountryCode: 'FI', Nationality: 'Finnish' },
+					{ NationalityID: +76, CountryCode: 'PF', Nationality: 'French Polynesian' },
+					{ NationalityID: +14, CountryCode: 'FR', Nationality: 'French' },
+					{ NationalityID: +77, CountryCode: 'GA', Nationality: 'Gabonese' },
+					{ NationalityID: +78, CountryCode: 'GM', Nationality: 'Gambian' },
+					{ NationalityID: +79, CountryCode: 'GE', Nationality: 'Georgian' },
+					{ NationalityID: +15, CountryCode: 'DE', Nationality: 'German' },
+					{ NationalityID: +16, CountryCode: 'GT', Nationality: 'Guatemalan' },
+					{ NationalityID: +80, CountryCode: 'GH', Nationality: 'Ghanaian' },
+					{ NationalityID: +81, CountryCode: 'GR', Nationality: 'Greek' },
+					{ NationalityID: +82, CountryCode: 'GD', Nationality: 'Grenadian' },
+					{ NationalityID: +83, CountryCode: 'GN', Nationality: 'Guinean' },
+					{ NationalityID: +84, CountryCode: 'GY', Nationality: 'Guyanese' },
+					{ NationalityID: +17, CountryCode: 'HT', Nationality: 'Haitian' },
+					{ NationalityID: +18, CountryCode: 'HN', Nationality: 'Honduran' },
+					{ NationalityID: +85, CountryCode: 'HU', Nationality: 'Hungarian' },
+					{ NationalityID: +19, CountryCode: 'IN', Nationality: 'Indian' },
+					{ NationalityID: +20, CountryCode: 'IE', Nationality: 'Ireland' },
+					{ NationalityID: +21, CountryCode: 'IL', Nationality: 'Israeli' },
+					{ NationalityID: +22, CountryCode: 'IT', Nationality: 'Italian' },
+					{ NationalityID: +86, CountryCode: 'IS', Nationality: 'Icelandic' },
+					{ NationalityID: +87, CountryCode: 'ID', Nationality: 'Indonesian' },
+					{ NationalityID: +88, CountryCode: 'IR', Nationality: 'Iranian' },
+					{ NationalityID: +89, CountryCode: 'IQ', Nationality: 'Iraqi' },
+					{ NationalityID: +23, CountryCode: 'JP', Nationality: 'Japanese' },
+					{ NationalityID: +90, CountryCode: 'JM', Nationality: 'Jamaican' },
+					{ NationalityID: +91, CountryCode: 'JO', Nationality: 'Jordanian' },
+					{ NationalityID: +92, CountryCode: 'KZ', Nationality: 'Kazakh' },
+					{ NationalityID: +93, CountryCode: 'KE', Nationality: 'Kenyan' },
+					{ NationalityID: +94, CountryCode: 'KP', Nationality: 'North Korean' },
+					{ NationalityID: +95, CountryCode: 'KW', Nationality: 'Kuwaiti' },
+					{ NationalityID: +96, CountryCode: 'LV', Nationality: 'Latvian' },
+					{ NationalityID: +97, CountryCode: 'LB', Nationality: 'Lebanese' },
+					{ NationalityID: +98, CountryCode: 'LR', Nationality: 'Liberian' },
+					{ NationalityID: +99, CountryCode: 'LY', Nationality: 'Libyan' },
+					{ NationalityID: +100, CountryCode: 'LT', Nationality: 'Lithuanian' },
+					{ NationalityID: +101, CountryCode: 'LU', Nationality: 'LUXEMBOURG' },
+					{ NationalityID: +102, CountryCode: 'MG', Nationality: 'Madagascan' },
+					{ NationalityID: +103, CountryCode: 'MW', Nationality: 'Malawian' },
+					{ NationalityID: +104, CountryCode: 'MY', Nationality: 'Malaysian' },
+					{ NationalityID: +105, CountryCode: 'MV', Nationality: 'Maldivian' },
+					{ NationalityID: +106, CountryCode: 'ML', Nationality: 'Malian' },
+					{ NationalityID: +107, CountryCode: 'MT', Nationality: 'Maltese' },
+					{ NationalityID: +108, CountryCode: 'MR', Nationality: 'Mauritanian' },
+					{ NationalityID: +109, CountryCode: 'MU', Nationality: 'Mauritian' },
+					{ NationalityID: +110, CountryCode: 'MC', Nationality: 'Monacan' },
+					{ NationalityID: +111, CountryCode: 'MN', Nationality: 'Mongolian' },
+					{ NationalityID: +112, CountryCode: 'ME', Nationality: 'Montenegrin' },
+					{ NationalityID: +113, CountryCode: 'MA', Nationality: 'Moroccan' },
+					{ NationalityID: +114, CountryCode: 'MZ', Nationality: 'Mozambican' },
+					{ NationalityID: +25, CountryCode: 'MX', Nationality: 'Mexican' },
+					{ NationalityID: +115, CountryCode: 'NA', Nationality: 'Namibian' },
+					{ NationalityID: +116, CountryCode: 'NP', Nationality: 'Nepalese' },
+					{ NationalityID: +117, CountryCode: 'NZ', Nationality: 'New Zealand' },
+					{ NationalityID: +118, CountryCode: 'NI', Nationality: 'Nicaraguan' },
+					{ NationalityID: +119, CountryCode: 'NE', Nationality: 'Nigerien' },
+					{ NationalityID: +120, CountryCode: 'NG', Nationality: 'Nigerian' },
+					{ NationalityID: +121, CountryCode: 'NO', Nationality: 'Norwegian' },
+					{ NationalityID: +122, CountryCode: 'OM', Nationality: 'Omani' },
+					{ NationalityID: +123, CountryCode: 'PK', Nationality: 'Pakistani' },
+					{ NationalityID: +124, CountryCode: 'PA', Nationality: 'Panamanian' },
+					{ NationalityID: +125, CountryCode: 'PG', Nationality: 'Guinean' },
+					{ NationalityID: +126, CountryCode: 'PY', Nationality: 'Paraguayan' },
+					{ NationalityID: +127, CountryCode: 'PE', Nationality: 'Peruvian' },
+					{ NationalityID: +27, CountryCode: 'PH', Nationality: 'Philippine' },
+					{ NationalityID: +128, CountryCode: 'PL', Nationality: 'Polish' },
+					{ NationalityID: +129, CountryCode: 'PT', Nationality: 'Portuguese' },
+					{ NationalityID: +130, CountryCode: 'QA', Nationality: 'Qatari' },
+					{ NationalityID: +131, CountryCode: 'RO', Nationality: 'Romanian' },
+					{ NationalityID: +132, CountryCode: 'RW', Nationality: 'Rwandan' },
+					{ NationalityID: +13, CountryCode: 'SV', Nationality: 'Salvadorean' },
+					{ NationalityID: +37, CountryCode: 'AS', Nationality: 'Samoan' },
+					{ NationalityID: +133, CountryCode: 'SA', Nationality: 'Saudi Arabian' },
+					{ NationalityID: +134, CountryCode: 'SN', Nationality: 'Senegalese' },
+					{ NationalityID: +135, CountryCode: 'RS', Nationality: 'Serbian' },
+					{ NationalityID: +136, CountryCode: 'SL', Nationality: 'Sierra Leonian' },
+					{ NationalityID: +137, CountryCode: 'SG', Nationality: 'Singaporean' },
+					{ NationalityID: +138, CountryCode: 'SK', Nationality: 'Slovak' },
+					{ NationalityID: +139, CountryCode: 'SI', Nationality: 'Slovenian' },
+					{ NationalityID: +140, CountryCode: 'SB', Nationality: 'Slomoni' },
+					{ NationalityID: +141, CountryCode: 'SO', Nationality: 'Somali' },
+					{ NationalityID: +142, CountryCode: 'ZA', Nationality: 'South African' },
+					{ NationalityID: +24, CountryCode: 'KR', Nationality: 'South Korean' },
+					{ NationalityID: +28, CountryCode: 'ES', Nationality: 'Spanish' },
+					{ NationalityID: +29, CountryCode: 'SE', Nationality: 'Swedish' },
+					{ NationalityID: +30, CountryCode: 'CH', Nationality: 'Swiss' },
+					{ NationalityID: +143, CountryCode: 'LK', Nationality: 'Sri Lankan' },
+					{ NationalityID: +144, CountryCode: 'SD', Nationality: 'Sudanese' },
+					{ NationalityID: +145, CountryCode: 'SR', Nationality: 'Surinamese' },
+					{ NationalityID: +146, CountryCode: 'SZ', Nationality: 'Swazi' },
+					{ NationalityID: +31, CountryCode: 'TW', Nationality: 'Taiwanese' },
+					{ NationalityID: +147, CountryCode: 'TJ', Nationality: 'Tajik' },
+					{ NationalityID: +148, CountryCode: 'TH', Nationality: 'Thai' },
+					{ NationalityID: +149, CountryCode: 'TG', Nationality: 'Togolese' },
+					{ NationalityID: +150, CountryCode: 'TT', Nationality: 'Trinidadian' },
+					{ NationalityID: +151, CountryCode: 'TN', Nationality: 'Tunisian' },
+					{ NationalityID: +152, CountryCode: 'TR', Nationality: 'Turkish' },
+					{ NationalityID: +153, CountryCode: 'TM', Nationality: 'Turkoman' },
+					{ NationalityID: +154, CountryCode: 'TV', Nationality: 'Tuvaluan' },
+					{ NationalityID: +155, CountryCode: 'UG', Nationality: 'Ugandan' },
+					{ NationalityID: +156, CountryCode: 'UA', Nationality: 'Ukrainian' },
+					{ NationalityID: +157, CountryCode: 'AE', Nationality: 'Emirati' },
+					{ NationalityID: +32, CountryCode: 'VE', Nationality: 'Venezuelan' },
+					{ NationalityID: +33, CountryCode: 'VN', Nationality: 'Vietnamese' },
+					{ NationalityID: +159, CountryCode: 'UY', Nationality: 'Uruguayan' },
+					{ NationalityID: +160, CountryCode: 'UZ', Nationality: 'Uzbek' },
+					{ NationalityID: +161, CountryCode: 'VU', Nationality: 'Vanuatuan' },
+					{ NationalityID: +162, CountryCode: 'YE', Nationality: 'Yemeni' },
+					{ NationalityID: +163, CountryCode: 'ZM', Nationality: 'Zambian' }
+				];
+
+			option=initValue
+			each country in countries
+				option(value=country.CountryCode) #{country.NationalityID}
+		span(class="material-symbols-outlined pointer-events-none absolute left-[10%] top-[30%]") keyboard_arrow_down
+		input(type="text" class="pl-[33px]" placeholder="454-45454-778")
+	span #{error}
+
+mixin rangeSlider(label, value, min, max, step,  postfix='',id)
+	.range-slide-bar
+		.range-slide-bar__header 
+			.range-slide-bar__label=label
+			.range-slide-bar__value!=value
+		input.range-slider(type='text' name='my_range' value='' id=id data-min=min data-max=max data-step=step data-postfix=postfix)
+
+mixin ribbon(title, value1, label1, value2, label2, btnText, hasOr)
+	.ribbon
+		.ribbon__title=title
+		.ribbon__values.d-none.d-lg-flex
+			.ribbon__col
+				.ribbon__value=value1
+				.ribbon__label=label1
+			if (hasOr)
+				.ribbon__col
+					span OR
+			.ribbon__col
+				.ribbon__value=value2
+				.ribbon__label=label2
+		+linkButton('#', btnText,'btn--white ribbon__btn')
+
+mixin banner(heading, image, logo=false, logoURL)
+	.banner.relative.mask(class="h-[555px] z-0")
+		+img(image, 'banner', 'w-full h-full object-cover', false)
+		if (logo)
+			div(class="w-[350px] lg:w-[460px] h-[150px] absolute z-10 top-[50%] ltr:left-[50%] rtl:right-[50%] translate-x-[-50%] translate-y-[-50%] mt-14 flex justify-center items-center")
+				+img(logoURL, 'logo', 'max-w-[70%] md:max-w-[100%]', false)
+		else
+			h1.h1.text-center.z-10(class="w-full absolute top-[50%] translate-y-[-50%] text-white mt-14 px-7") #{heading}
+
+mixin formInput(labelText, title, type, id, error, cssClass='', readonly=false, disabled=false, required=false, value="", dataAttrs={})
+	- readonly = Boolean(readonly)
+	- disabled = Boolean(disabled)
+	- required = Boolean(required)
+
+	if labelText
+		label(for=id class="md:text-md text-base font-medium leading-[150%] normal-case tracking-[1.5%] block pb-[10px]") #{labelText}
+
+	input(
+		type=type,
+		value=value,
+		name=title,
+		id=id,
+		placeholder=title,
+		readonly=readonly,
+		disabled=disabled,
+		required=required,
+		class=`border border-[#C8C8C8] rounded px-3 py-2  w-full max-md:text-sm ${cssClass} ${disabled ? 'cursor-not-allowed opacity-50' : ''}`,
+	)&attributes(dataAttrs)
+	if error
+		span.error-msg.text-sm.text-red.mt-1 #{error}
+
+mixin formInputNumber(title,type, id, cssClass='', readonly=false, disabled=false, required=false, value="")
+	input(
+		type=type,
+		value=value,
+		name=title,
+		id=id,
+		placeholder=title,
+		readonly=readonly,
+		disabled=disabled,
+		required=required,
+		class=`border border-[#C8C8C8] rounded px-1 py-1 w-[40px] !text-sm ${cssClass}`
+	)
+
+mixin formSelect(labelText, title, optArr, error, cssClass='',id, dataAttrs={}, optObj=[])
+	if (labelText)
+		label(class="md:text-md text-base  font-medium leading-[150%] normal-case tracking-[1.5%] block pb-[10px]" for=id) #{labelText}
+	.relative
+		select(class=`border border-[#C8C8C8] rounded-md px-3 py-2 w-full  appearance-none max-md:text-sm ${cssClass}` id=id)&attributes(dataAttrs)
+			option(value="" disabled selected hidden)= title
+			if (optObj.length)
+				each item in optObj
+					option(value=item.key)= item.value
+			else if (optArr)
+				- const camelCase = str => str.replace(/(?:^\w|[A-Z]|\b\w)/g, (w, i) => i === 0 ? w.toLowerCase() : w.toUpperCase()).replace(/\s+/g, '');
+				each list in optArr
+					option(value=camelCase(list))= list
+			else
+				option #{title}
+				option 1
+				option 2
+				option 3
+		span(class="material-symbols-outlined absolute pointer-events-none ltr:right-4 rtl:left-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]") keyboard_arrow_down
+	if (error)
+		span.error-msg #{error}
+
+mixin radio(id, name, label, checked=false, readonly=false, disabled=false, dataAttrs={}, type='radio')
+	- readonly = Boolean(readonly)
+	- disabled = Boolean(disabled)
+	- checked = Boolean(checked)
+
+	.flex.items-center
+		label.relative.flex.items-center.cursor-pointer(for=id)
+			input(
+				type=type,
+				id=id,
+				name=name,
+				checked=checked,
+				readonly=readonly,
+				disabled=disabled,
+				class=`peer h-5 w-5 appearance-none rounded-full border border-[#C8C8C8] checked:border-slate-400 transition-all 
+					${disabled ? 'cursor-not-allowed opacity-50' : ''}`
+			)&attributes(dataAttrs)
+			span(class=`absolute bg-green w-3 h-3 rounded-full opacity-0 peer-checked:opacity-100 transition-opacity duration-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`)
+		label.ml-2.text-slate-600.text-sm.whitespace-nowrap(for=id class=disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer')= label
+
+mixin formMultiSelect(labelText, title, optArr, error)
+	label(class="md:text-md text-base  font-medium leading-[150%] normal-case tracking-[1.5%] block pb-[10px]") #{labelText}
+	.relative
+		select(class="border border-[#C8C8C8] rounded-md after:absolute px-3 py-2 w-full  appearance-none max-md:text-sm")
+			option(value="" disabled selected hidden)= title
+			if(optArr)
+				each list in optArr
+					option #{list}
+			else
+				option #{title}
+				option 1
+				option 2
+				option 3
+		span(class="material-symbols-outlined absolute pointer-events-none right-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]") keyboard_arrow_down
+	if (error)
+		span.error-msg #{error}
+
+mixin formTextArea(labelText, title, error, cssClass = '', readonly=false, disabled=false, value="",  dataAttrs={}, required=false)
+	- readonly = Boolean(readonly)
+	- disabled = Boolean(disabled)
+	- required = Boolean(required)
+
+	if labelText
+		label(
+			class="md:text-md text-base font-medium leading-[150%] normal-case tracking-[1.5%] block pb-[10px]"
+		) !{labelText}
+	textarea(
+		name=title,
+		placeholder=title,
+		class=`border border-[#C8C8C8] h-[90px] w-full rounded px-3 py-2 max-md:text-sm ${cssClass} ${disabled ? 'cursor-not-allowed opacity-50' : ''}`,
+		readonly=readonly,
+		disabled=disabled,
+		required=required
+	)&attributes(dataAttrs)= value
+	if error
+		span.error-msg.text-sm.text-red.mt-1 #{error}
+
+
+mixin contentBlock(title, image, cssClass='', flip=false)
+	.flex.grid-cols-2.items-center(class=`${flip ? 'flex-row-reverse' : ''} ${cssClass} gap-12 md:gap-20 max-md:flex-col`)
+		div(class="w-full md:w-1/2")
+			h2(class=``) !{title}
+			.rte-components(class="md:w-[80%] mt-10 lg:mt-[48px]")
+				if flip
+					p(class="text-[#636569] body-large") Souq Mina Zayed’s Fish Market delivers an unmatched variety of seafood sourced locally and internationally.
+					ul(class="text-[#636569] body-large")
+						li 104 fresh fish stalls with local and imported seafood
+						li 8 dried fish stalls offering preserved specialities104 fresh fish stalls with local and imported seafood
+						li Sourced from Tunisia, Turkey, Norway, India, Pakistan, Oman, Sri Lanka, and the Maldives
+				else
+					p.body-large(class="text-[#636569]") For over 40 years, the Fish Market at Souq Mina Zayed has been the city’s go-to destination for fresh, local seafood.
+					p.mt-10(class="text-[#636569]") With upgraded facilities and modern infrastructure, it continues to serve residents, chefs, and visitors with the finest daily catch.
+		div(class="w-full md:w-1/2")
+			+img(image, 'grid', 'w-full h-full object-cover')
+
+mixin card(image, cardTag, date, title, desc, link1, link2)
+	- var links = []
+	- if (link1) links.push(link1)
+	- if (link2) links.push(link2)
+	.flex.flex-col.h-full
+		.relative
+			+img(image, "event-img", "object-cover w-full h-[260px]", true)
+			if (cardTag)
+				span(class="card-tag bg-[#6E5540] text-white text-sm p-2 absolute top-4 left-4") #{cardTag}
+		if (date)
+			span(class="font-medium text-sm pt-6") #{date}
+		div(class="flex flex-col justify-between mt-8 gap-8 h-full")
+			div(class="flex flex-col gap-2.5")
+				+heading(title, "h5", "")
+				+paragraph(desc, "card-desc")
+			div(class="card-links pb-[2px] rtl:pb-[3px]")
+				if (link1 && link2)
+					div(class="flex gap-x-5 pb-5")
+						each lnk in links
+							+linkButton(lnk, "north_east", "16", "#.", "", false, false, true)
+				else if (link1)
+					+linkButton(link1, "north_east", "16", "#.", "", false, false, true)
+				else if (link2)
+					+linkButton(link2, "north_east", "16", "#.", "", false, false, true)
+
+mixin cardGrid(cards=[], hasMobileSwiper=false)
+
+	if hasMobileSwiper
+		div(class=`${hasMobileSwiper ? 'news-card-swiper relative' : ''}`)
+			div(class="swiper-wrapper lg:grid lg:grid-cols-3 lg:gap-x-5 lg:gap-y-10")
+				each card in cards
+					.swiper-slide
+						+card(card.image, card.cardTag, card.date, card.title, card.desc, card.link1, card.link2)
+			div(class="lg:hidden w-full h-[48px] relative flex items-center justify-between mt-10")
+				div(class="swiper-card-prev w-[48px] h-[48px] border rounded-full border-[#6E5540] flex items-center justify-center")
+					span(class="material-symbols-outlined rtl:rotate-180") arrow_left_alt
+				div(class="swiper-card-pagination relative !w-auto !top-auto !bottom-auto")
+				div(class="swiper-card-next w-[48px] h-[48px] border rounded-full border-[#6E5540] right-0 flex items-center justify-center")
+					span(class="material-symbols-outlined rtl:rotate-180") arrow_right_alt
+
+	else
+		div(class=`grid gap-x-5 gap-y-10 lg:grid-cols-3 md:grid-cols-2 grid-cols-1`)
+			each card in cards
+				+card(card.image, card.cardTag, card.date, card.title, card.desc, card.link1, card.link2)
+
+mixin cardSection(headingText, headingClass, btnText, cards, hasMobileSwiper=false, cssClass, highlightSection=false, hasBtn=false) 
+	section.section(class=`${cssClass} ${highlightSection ? 'bg-lightbrown' : ''}`)
+		.container
+			div(class="flex flex-nowrap lg:items-center lg:justify-between flex-col lg:flex-row gap-10 mb-10 lg:mb-[80px]")
+				div(class="flex flex-col gap-4 lg:gap-8")
+					if headingText
+						+heading(headingText, "h2", `${headingClass}`)
+				if btnText
+					div
+						+button(btnText, 'button', 'btn-primary', "", "")
+			+cardGrid(cards, hasMobileSwiper)
+			if hasBtn
+				div(class="mt-[100px]")
+					+button('Load More', 'button', 'btn-primary block mx-auto max-md:w-full', "", "")
+
+mixin eventsCardSection(headingText, desc, headingClass, cards, hasMobileSwiper=false, cssClass, highlightSection=false, hasBtn=false) 
+	section.section(class=`${cssClass} ${highlightSection ? 'bg-lightbrown' : ''}`)
+		.container
+			div(class=`flex flex-nowrap ${desc ? "md:items-end" : "md:items-center"} md:justify-between flex-col md:flex-row gap-10 pt-20 pb-12 md:py-[100px]`)
+				div(class="flex flex-col gap-4 md:gap-8")
+					if headingText
+						+heading(headingText, "h2", `${headingClass}`)
+					if desc
+						+paragraph(desc, "body-large !font-light")
+				div(class="flex items-center gap-4 max-lg:flex-col max-md:w-full max-lg:w-[320px]")
+					.relative.w-full(class="")
+						div(class="multiselect-container relative")
+							div(class="multiselect-btn bg-transparent border border-[#6E5540] text-[#6E5540] text-sm font-normal leading-4 p-4 outline-none rounded-lg appearance-none w-[250px] h-[50px] max-lg:w-full") Filter by Souq
+							div(class="checkboxes w-full mt-2 hidden border border-[#6E5540] absolute bg-white rounded-md")
+								label(class="flex flex-row items-center gap-2 cursor-pointer px-3 py-3 relative font-medium")
+									input(type='checkbox' value='Adventure' class="opacity-0")
+									span(class="checkmark w-[14px] h-[14px] absolute top-3 left-3 bg-white border border-[#6E5540] rounded-sm")
+									|  Adventure
+								label(class="flex flex-row items-center gap-2 cursor-pointer px-3 py-3 relative font-medium")
+									input(type='checkbox' value='Relaxation')
+									span(class="checkmark w-[14px] h-[14px] absolute top-3 left-3 bg-white border border-[#6E5540] rounded-sm")
+									|  Relaxation
+								label(class="flex flex-row items-center gap-2 cursor-pointer px-3 py-3 relative font-medium")
+									input(type='checkbox' value='Culture')
+									span(class="checkmark w-[14px] h-[14px] absolute top-3 left-3 bg-white border border-[#6E5540] rounded-sm")
+									|  Culture
+								label(class="flex flex-row items-center gap-2 cursor-pointer px-3 py-3 relative font-medium")
+									input(type='checkbox' value='Nature')
+									span(class="checkmark w-[14px] h-[14px] absolute top-3 left-3 bg-white border border-[#6E5540] rounded-sm")
+									|  Nature
+							div(class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[#6E5540]")
+								span(class="material-symbols-outlined") keyboard_arrow_down
+							span.hidden-tester
+					.relative.w-full
+						input(type='text' name='daterange' class='daterange-picker bg-transparent border border-[#6E5540] text-[#6E5540] text-sm font-normal leading-4 p-4 outline-none rounded-lg w-[250px] h-[50px] max-lg:w-full rtl:text-left' value='Pick a Date')
+						div(class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[#6E5540] cursor-pointer")
+							span(class="material-symbols-outlined") keyboard_arrow_down
+			+cardGrid(cards, hasMobileSwiper)
+			if hasBtn
+				div(class="mt-[100px]")
+					+button('Load More', 'button', 'btn-primary block mx-auto max-md:w-full', "", "")
+
+mixin carouselCardGrid(cards=[])
+	div(class="relative")
+		div(class=`carousel-card-swiper xl:overflow-hidden relative`)
+			div(class="swiper-wrapper")
+				each card in cards
+					.swiper-slide(class="!h-auto")
+						+card(card.image, card.cardTag, card.date, card.title, card.desc, card.link1, card.link2)
+			div(class="xl:hidden swiper-carousel-pagination absolute z-10 !w-full !top-auto !-bottom-[75px] text-center px-20")
+		div(class="flex justify-between items-center xl:absolute xl:top-[110px] z-20 xl:mt-0 w-full h-[48px] relative pointer-events-none mt-10")
+			div(class="swiper-carousel-prev xl:relative xl:-left-[70px] w-[48px] h-[48px] border rounded-full border-[#6E5540] flex items-center justify-center pointer-events-auto")
+				span(class="material-symbols-outlined rtl:rotate-180") arrow_left_alt
+			div(class="swiper-carousel-next xl:relative xl:-right-[70px] right-0 w-[48px] h-[48px] border rounded-full border-[#6E5540] flex items-center justify-center pointer-events-auto")
+				span(class="material-symbols-outlined rtl:rotate-180") arrow_right_alt
+
+mixin carouselCardSection(headingText, headingClass, btnText, cards, cssClass, highlightSection=false) 
+	section.section(class=`carousel-card-section ${cssClass} ${highlightSection ? 'bg-lightbrown' : ''}`)
+		.container
+			div(class="flex flex-nowrap lg:items-center lg:justify-between flex-col lg:flex-row gap-10 mb-10 lg:mb-[80px]")
+				div(class="flex flex-col gap-4 lg:gap-8")
+					if headingText
+						+heading(headingText, "h2", `${headingClass}`)
+				if btnText
+					div
+						+button(btnText, 'button', 'btn-primary', "", "")
+			+carouselCardGrid(cards)
+
+mixin experienceCard(iconText, desc)
+	div(class=["experience-border border-[#6e554033] border-r md:p-6 pt-6 px-6 pb-8 md:p-10 text-center text-center","max-md:border-r-0","max-md:border-b","max-md:last:border-b-0","max-md:[&:nth-child(2n)]:border-r-0","md:[&:nth-child(3n)]:border-r-0"].join(" "))
+		.experience-icon
+			span(class=`material-symbols-outlined text-[32px] ${iconClass}`) #{iconText}
+		+paragraph(desc, "body-large !font-light whitespace-pre-line pt-6 text-[#636569]")
+
+mixin experienceSection(headingText, tag, headingClass, cssClass, paragraphText, paragraphClass, cards=[], highlightSection=false)
+	//- - var checkText = paragraphText ? "mb-10 lg:mb-[50px]": "mb-10 lg:mb-20"
+	section.section(class=`${cssClass} ${highlightSection ? 'bg-[#FBF9F5]' : ''}`)
+		.container
+			div(class="max-w-[768px] m-auto mb-10 lg:mb-20")
+				if headingText
+					+heading(headingText, tag, `text-center mb-6 lg:mb-10 ${headingClass}`)
+				if paragraphText
+					+paragraph(paragraphText, `body-large text-center text-[#636569] whitespace-pre-line ${paragraphClass}`)
+			div(class="grid md:grid-cols-3 grid-cols-1 gap-y-5")
+				each card in cards
+					+experienceCard(card.iconText, card.desc)
+
+mixin detailContentBox(headingText, headingClass, paragraphs, paragraphsClass, cssClass)
+	section.section(class=cssClass)
+		.container
+			div(class="flex flex-col lg:flex-row gap-10 lg:gap-[100px] font-lightgrey")
+				div(class="w-full")
+					div(class="flex-col flex gap-5")
+						if headingText
+							+heading(headingText, "h4", `${headingClass}`)
+						each para in paragraphs
+							p(class=paragraphsClass) !{para}
+				div(class="flex flex-col gap-5")
+					h4(class="") Share
+					div(class="social-icons flex gap-[8px]")
+						a.w-10.h-10.bg-brown.flex.items-center.justify-center.rounded-full(target="_blank" href="#.")
+							+img("/icons/linkedin.svg", "instagram", "w-[20px] h-[18px]", false)
+						a.w-10.h-10.bg-brown.flex.items-center.justify-center.rounded-full(target="_blank" href="#.")
+							+img("/icons/twitter.svg", "instagram", "w-[20px] h-[18px]", false)
+						a.w-10.h-10.bg-brown.flex.items-center.justify-center.rounded-full(target="_blank" href="#.")
+							+img("/icons/facebook.svg", "instagram", "w-[20px] h-[18px]", false)
+
+mixin discoverCard(image, title)
+	.flex.flex-col
+		.relative
+			+img(image, "event-img", "object-cover w-full h-[300px]", true)
+		div(class="flex flex-col justify-between mt-8 gap-8 h-full")
+			+heading(title, "p", "body-normal text-center !font-medium")
+
+mixin discoverCardSection(cards=[], headingText, headingClass, paragraphText, paragraphClass)
+	section.section
+		.container
+			div(class="mb-10 lg:mb-20")
+				if headingText
+					+heading(headingText, "h2", `${headingClass}`)
+				if paragraphText
+					+paragraph(paragraphText, `body-large text-center text-[#636569] whitespace-pre-line ${paragraphClass}`)
+			div(class="grid grid-cols-4 md:grid-cols-12 gap-[50px] md:gap-4 lg:gap-6")
+
+				each card in cards
+					div(class="col-span-4")
+						+discoverCard(card.image, card.title)
+
+mixin souqBlock(image, title, desc, listItems=[], img, useSwiper=false, blockData=[])
+	section(class=`section relative bg-souq z-0 ${useSwiper ? 'souq-block' : ''}`)
+		.container
+			div(class=`bg-souq-pattern hidden md:block w-[55%] h-[95%] absolute bottom-0 -left-2.5 rtl:scale-x-[-1] ${useSwiper ? 'scale-x-[-1] rtl:scale-x-[1] !left-auto right-0' : ''}`)
+				svg(width='100%' height='100%' viewBox='0 0 772 715' fill='none' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none')
+					path(opacity='0.5' d='M771.5 426.25C771.5 191.115 580.885 0.5 345.75 0.5C110.615 0.5 -80 191.115 -80 426.25V426.5C-80 191.779 110.503 1.5 345.5 1.5C580.221 1.5 770.5 191.779 770.5 426.5L771.5 426.25ZM-80 715H771H-80ZM771.5 715V426.25C771.5 191.115 580.885 0.5 345.75 0.5L345.5 1.5C580.221 1.5 770.5 191.779 770.5 426.5V715H771.5ZM-80 1V715V1Z' fill='#007AAA')
+
+			div(class="flex flex-col md:grid md:grid-cols-12 gap-[60px] md:gap-6 items-center relative z-10")
+				div(class=`w-full md:col-span-6 ${useSwiper ? 'md:order-2 md:col-span-5 md:col-start-8' : ''}`)
+					+heading(title, "h2", "mb-[24px] lg:mb-[60px]")
+					+paragraph(desc, "body-large text-[#636569]")
+					if listItems.length && listItems.some(item => item.itemData)
+						ul(class="mt-[24px] lg:mt-[60px] text-[#636569] list-disc pl-5")
+							each items in listItems
+								if items.itemData
+									li.body-large(class="pb-4 lg:pb-6") #{items.itemData}
+				div(class=`w-full md:col-span-6 md:relative ${useSwiper ? 'md:order-1' : ''}`)
+					if useSwiper
+						.swiper.souq-block-swiper(class="md:max-h-[480px] lg:max-h-[668px] h-[480px] md:h-full")
+							.swiper-wrapper
+								each card in blockData
+									.swiper-slide.w-full
+										+img(card.image, "", "w-full md:max-h-[480px] lg:max-h-[668px] h-[480px] md:h-full object-cover", true)
+
+						div(class="flex justify-between items-center z-20 w-full h-[48px] relative mt-10 md:mt-0 md:absolute md:bottom-0")
+							div(class="md:hidden swiper-souq-prev relative z-10 left-0 w-[48px] h-[48px] border rounded-full border-[#6E5540] flex items-center justify-center")
+								span(class="material-symbols-outlined rtl:rotate-180") arrow_left_alt
+							div(class="swiper-pagination !z-0")
+							div(class="md:hidden swiper-souq-next relative z-10 right-0 w-[48px] h-[48px] border rounded-full border-[#6E5540] flex items-center justify-center")
+								span(class="material-symbols-outlined rtl:rotate-180") arrow_right_alt
+
+					else
+						+img(img, "", "md:min-h-[506px] w-full", true)
+
+mixin pagination(currentPage, totalPages)
+	section(class="mb-10 md:mb-20")
+		.container
+			if totalPages > 1
+				nav.flex.items-center.justify-center
+					ul.flex.items-center.gap-2.overflow-hidden
+
+						//- Back Button
+						if currentPage > 1
+							li
+								a(href=`?page=${currentPage - 1}` class="flex bg-brown text-white px-3 py-4 rounded-lg text-[14px] leading-none font-medium uppercase") Back
+
+						//- Page 1
+						li
+							if currentPage === 1
+								span(class="flex justify-center min-w-[48px] bg-brown text-white px-3 py-4 rounded-lg text-[14px] leading-none font-medium cursor-default") 1
+							else
+								a(class="flex bg-white justify-center min-w-[48px] px-3 py-4 text-[14px] leading-none font-medium rounded-lg" href="?page=1") 1
+
+						//- Page 2 (if it exists)
+						if totalPages >= 2
+							li
+								if currentPage === 2
+									span(class="flex justify-center min-w-[48px] bg-brown text-white px-3 py-4 rounded-lg text-[14px] leading-none font-medium cursor-default") 2
+								else
+									a(class="flex bg-white justify-center min-w-[48px] px-3 py-4 text-[14px] leading-none font-medium rounded-lg" href="?page=2") 2
+
+						//- Logic for middle range
+						- let hasLeftGap = currentPage > 3
+						- let hasRightGap = currentPage < totalPages - 2
+
+						//- Show middle range OR truncate
+						if hasLeftGap && !hasRightGap
+							//- Only one ellipsis before the middle pages
+							li
+								span.px-3.py-2.text-gray-500 ...
+
+							- for (let i = currentPage - 1; i <= currentPage + 1 && i < totalPages; i++)
+								if i > 2
+									li
+										if i === currentPage
+											span(class="flex justify-center min-w-[48px] bg-brown text-white px-3 py-4 rounded-lg text-[14px] leading-none font-medium cursor-default") #{i}
+										else
+											a(class="flex bg-white justify-center min-w-[48px] px-3 py-4 text-[14px] leading-none font-medium rounded-lg" href=`?page=${i}`) #{i}
+
+						else if !hasLeftGap && hasRightGap
+							//- Middle pages, then single ellipsis
+							- for (let i = 3; i <= Math.min(currentPage + 1, totalPages - 1); i++)
+								li
+									if i === currentPage
+										span(class="flex justify-center min-w-[48px] bg-brown text-white px-3 py-4 rounded-lg text-[14px] leading-none font-medium cursor-default") #{i}
+									else
+										a(class="flex bg-white justify-center min-w-[48px] px-3 py-4 text-[14px] leading-none font-medium rounded-lg" href=`?page=${i}`) #{i}
+							li
+								span.px-3.py-2.text-gray-500 ...
+
+						else if hasLeftGap && hasRightGap
+							//- Current is somewhere in the middle — show ellipsis and center
+							li
+								span.px-3.py-2.text-gray-500 ...
+							- for (let i = currentPage - 1; i <= currentPage + 1 && i < totalPages; i++)
+								if i > 2
+									li
+										if i === currentPage
+											span(class="flex justify-center min-w-[48px] bg-brown text-white px-3 py-4 rounded-lg text-[14px] leading-none font-medium cursor-default") #{i}
+										else
+											a(class="flex bg-white justify-center min-w-[48px] px-3 py-4 text-[14px] leading-none font-medium rounded-lg" href=`?page=${i}`) #{i}
+							//- No second ellipsis — one is enough
+
+						//- Last page
+						if totalPages > 2
+							li
+								if currentPage === totalPages
+									span(class="flex justify-center min-w-[48px] bg-brown text-white px-3 py-4 rounded-lg text-[14px] leading-none font-medium cursor-default") #{totalPages}
+								else
+									a(class="flex bg-white justify-center min-w-[48px] px-3 py-4 text-[14px] leading-none font-medium rounded-lg" href=`?page=${totalPages}`) #{totalPages}
+
+						//- Next Button
+						if currentPage < totalPages
+							li
+								a(href=`?page=${currentPage + 1}` class="flex bg-brown text-white px-3 py-4 rounded-lg text-[14px] leading-none font-medium uppercase") Next
+
+mixin infoSection(data, headingText, descText, hasBg=false)
+	section.section(class=`info-block ${hasBg ? 'bg-lightbrown' : ''}`)
+		.container
+			.row
+				div(class="flex flex-col mb-10 lg:mb-20")
+					+heading(headingText, "h2", "text-center")
+					if descText
+						+paragraph(descText, "body-large !font-light text-center mt-5 lg:mt-10")
+				div(class="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 lg:gap-5")
+					each info in data
+						div(class="flex flex-col flex-1 gap-4 text-center max-w-[297px]")
+							span(class="material-symbols-outlined text-[32px] lg:text-[40px]") !{info.icon}
+							+heading(info.title, "h6", "")
+							+paragraph(info.disc, "body-small font-light")
+
+mixin sidebar(data)
+	aside.w-64.bg-white.p-4.space-y-6.border-t-1.border-indigo-500.mt-2
+		nav.space-y-2.text-gray-700.text-sm
+			each item in data
+				a.block.px-4.py-2.rounded.bg-gray-200.font-semibold(href=item.link)= item.name
+
+mixin toggle(labelText,id,isChecked)
+	- const checkedAttr = isChecked ? 'checked' : false
+	label(class="inline-flex items-center mb-5 cursor-pointer")
+		input(type="checkbox", id=id, class="sr-only peer", checked=checkedAttr)
+		div(class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-400 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-teal-800")
+		if labelText
+			span(class="ms-3 text-sm font-medium text-gray-600")= labelText

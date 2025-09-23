@@ -1,0 +1,18 @@
+- var stringVar = "Variables usage example";
+- var numberVar = 40;
+- var boolVar = true;
+
+//- Direct variable to tag usage
+
+h1=stringVar
+h2=numberVar
+//- variable between string values
+h2 Using variable: #{numberVar} between string
+//- javascript expressions
+h2 Calculations: #{numberVar} + 20 = #{numberVar + 20}
+h2 Expressions: #{numberVar > 30 ? "number is more then 30" : "number is not more then 30"}
+h2 Expressions: #{boolVar ? "bool value is true" : "bool value is false"}
+
+//- All javscript string functions will work
+h2 string manipulation: #{stringVar.toLowerCase()}
+h2 string manipulation: #{stringVar.toUpperCase()}

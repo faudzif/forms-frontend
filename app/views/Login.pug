@@ -1,0 +1,25 @@
+extends layouts/layout-wo-header.pug
+
+block pageTitle
+	- var title_en="Login | SNB RDD"
+	- var title_ar="Login | SNB RDD"
+	- var desc_en=""
+	- var desc_ar=''
+	- var link_en=""
+	- var link_ar=""
+
+block content
+	.flex.items-center.justify-center.min-h-screen
+		.bg-white.shadow-lg.rounded-lg.p-8.w-full.max-w-md
+			h2.text-2xl.font-bold.text-center.mb-6 Login
+			form#loginForm
+				.mb-4
+					label.block.text-sm.font-medium.mb-1(for="username") Username
+					input#username(type="text", required, class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500")
+				.mb-4
+					label.block.text-sm.font-medium.mb-1(for="password") Password
+					input#password(type="password", required, class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500")
+				button(type="submit" class="btn w-full bg-green text-white font-semibold py-2 px-4 rounded") Login
+				//- (text,href,iconName='', iconSize=16, cssClass='', secondaryBtn=false, noLink=false)
+				//- +btn('LOGIN', 'add.html', '', '18', 'mt-4')
+				#errorMessage.hidden.mt-4.text-red-600.text-sm

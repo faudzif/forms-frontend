@@ -1,0 +1,59 @@
+<div class="py-4 text-sm text-gray-600">
+    .flex.flex-col.gap-6.mb-4 
+        div(class="flex gap-6 items-center  whitespace-nowrap w-100")
+            .w-50.flex.gap-6.items-center
+                +label("Flow Name","min-w-[150px]")
+                +input("","","text","","","","",dataAttrs={'data-request': 'name'})
+    .p-4.bg-gray-50
+        .flex.justify-end
+            //- +btn('Add Conditions', '', 'add', '16', 'justify-center cursor-pointer', '', '','',true)
+            span.text-white.rounded-full.bg-red.px-3.py-2.flex Sub Form Linked
+
+        .flex.flex-col.gap-6 
+            div(class="flex gap-6 items-center  whitespace-nowrap w-100")
+                .w-50.flex.gap-6.items-center
+                    +label("Step Name","min-w-[150px]")
+                    +input("","","text","","","","",dataAttrs={'data-request': 'name'})
+                .w-50
+                    +btn('+ Add New User', '', 'add', '16', 'justify-center cursor-pointer', '', '','',true)            
+        .flex.gap-6.mt-5
+            .p-4.bg-gray-100.w-50
+                h4 Approval Case
+                .flex.flex-col.items-center.gap-3
+                    +btn('Add Conditions', '', 'add', '16', 'mt-4 justify-center cursor-pointer', '', '','',true)
+                    |OR
+                    +toggle('Mark request as complete & notify stakeholders', 'test',false)
+                div(class="flex gap-6  items-center")
+                    label(class="md:text-md text-base min-w-[100px] font-medium leading-[150%] normal-case tracking-[1.5%] block") Notify
+                    .relative.w-100
+                        <select class="select-single" placeholder="Head of Brand" autocomplete="off">
+                            <option value="">Head of Brand</option>
+                            <option value="4">Khalid Bin Zia</option>
+                            <option value="1">Hala Shaikh</option>
+                            <option value="3">Badar Abu Rassa</option>
+                        </select>
+                        span(class="material-symbols-outlined absolute pointer-events-none right-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]") keyboard_arrow_down
+            .p-4.bg-gray-100.w-50
+                h4 Rejection Case
+                .flex.flex-col.gap-6.mt-4
+                    div(class="flex gap-6  items-center")
+                        label(class="md:text-md text-base min-w-[100px] font-medium leading-[150%] normal-case tracking-[1.5%] block") Reassign
+                        .relative.w-100
+                            <select class="select-single" placeholder="Head of Brand" autocomplete="off">
+                                <option value="">Head of Brand</option>
+                                <option value="4">Khalid Bin Zia</option>
+                                <option value="1">Hala Shaikh</option>
+                                <option value="3">Badar Abu Rassa</option>
+                            </select>
+                            span(class="material-symbols-outlined absolute pointer-events-none right-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]") keyboard_arrow_down
+                    div(class="flex gap-6  items-center")
+                        label(class="md:text-md text-base min-w-[100px] font-medium leading-[150%] normal-case tracking-[1.5%] block") Notify
+                        .relative.w-100
+                            <select class="select-single" placeholder="Head of Brand" autocomplete="off">
+                                <option value="">Head of Brand</option>
+                                <option value="4">Khalid Bin Zia</option>
+                                <option value="1">Hala Shaikh</option>
+                                <option value="3">Badar Abu Rassa</option>
+                            </select>
+                            span(class="material-symbols-outlined absolute pointer-events-none right-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]") keyboard_arrow_down
+</div>

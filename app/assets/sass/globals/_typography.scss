@@ -1,0 +1,238 @@
+h1,
+.h1 {
+	@include font(28, 120%, 700);
+
+	@include media-breakpoint-up(md) {
+		@include font(42, 120%, 700);
+	}
+
+	@include media-breakpoint-up(lg) {
+		@include font(56, 120%, 700);
+	}
+}
+
+h2,
+.h2 {
+	@include font(28, 120%, 700);
+
+	@include media-breakpoint-up(md) {
+		@include font(32, 120%, 700);
+	}
+
+	@include media-breakpoint-up(lg) {
+		@include font(48, 120%, 700);
+	}
+}
+
+h3,
+.h3 {
+	@include font(24, 120%, 700);
+
+	@include media-breakpoint-up(lg) {
+		@include font(32, 120%, 700);
+	}
+}
+
+h4,
+.h4,
+blockquote {
+	@include font(22, 120%, 700);
+
+	@include media-breakpoint-up(lg) {
+		@include font(28, 120%, 700);
+	}
+}
+
+h5,
+.h5 {
+	@include font(18, 120%, 700);
+
+	@include media-breakpoint-up(lg) {
+		@include font(24, 120%, 700);
+	}
+}
+
+h6,
+.h6 {
+	@include font(20, 120%, 700);
+
+	// @include media-breakpoint-up(lg) {
+	// 	@include font(20, 120%, 700);
+	// }
+}
+
+.body-small {
+	@include font(14, 160%, 400);
+
+	// @include media-breakpoint-up(lg) {
+	// 	@include font(14, 160%, 400);
+	// }
+
+	&--bold {
+		font-weight: 600;
+	}
+}
+
+p,
+.body-normal {
+	@include font(14, 160%, 400);
+
+	@include media-breakpoint-up(lg) {
+		@include font(16, 160%, 400);
+	}
+
+	&--bold {
+		font-weight: 600;
+	}
+}
+
+.body-large {
+	@include font(16, 160%, 400);
+
+	@include media-breakpoint-up(lg) {
+		@include font(18, 160%, 400);
+	}
+}
+
+.body-extra-large {
+	@include font(16, 160%, 400);
+
+	@include media-breakpoint-up(lg) {
+		@include font(22, 160%, 400);
+	}
+}
+
+label,
+.label {
+	@include font(12, 100%, 400);
+	text-transform: uppercase;
+}
+
+.button {
+	text-decoration-line: none;
+	transition          : all 0.3s ease;
+
+	@include font(14, 100%, 500);
+
+	@include media-breakpoint-up(md) {
+		@include font(16, 100%, 500);
+	}
+
+
+}
+
+html[lang="ar"] {
+
+	h1,
+	.h1 {
+		@include font(28, 120%, 700);
+
+		@include media-breakpoint-up(md) {
+			@include font(42, 120%, 700);
+		}
+
+		@include media-breakpoint-up(lg) {
+			@include font(56, 120%, 700);
+		}
+	}
+
+	h2,
+	.h2 {
+		@include font(28, 120%, 700);
+
+		@include media-breakpoint-up(md) {
+			@include font(32, 120%, 700);
+		}
+
+		@include media-breakpoint-up(lg) {
+			@include font(48, 120%, 700);
+		}
+	}
+
+	h3,
+	.h3 {
+		@include font(24, 120%, 700);
+
+		@include media-breakpoint-up(lg) {
+			@include font(32, 120%, 700);
+		}
+	}
+
+	h4,
+	.h4,
+	blockquote {
+		@include font(22, 120%, 700);
+
+		@include media-breakpoint-up(lg) {
+			@include font(28, 120%, 700);
+		}
+	}
+
+	h5,
+	.h5 {
+		@include font(18, 120%, 700);
+
+		@include media-breakpoint-up(lg) {
+			@include font(24, 120%, 700);
+		}
+	}
+
+	h6,
+	.h6 {
+		@include font(20, 120%, 700);
+	}
+
+	.body-small {
+		@include font(14, 160%, normal);
+
+		&--bold {
+			font-weight: 500;
+		}
+	}
+
+	p,
+	.body-normal {
+		@include font(14, 160%, normal);
+
+		@include media-breakpoint-up(lg) {
+			@include font(16, 160%, normal);
+		}
+
+		&--bold {
+			font-weight: 600;
+		}
+	}
+
+	.body-large {
+		@include font(16, 160%, normal);
+
+		@include media-breakpoint-up(lg) {
+			@include font(18, 160%, normal);
+		}
+	}
+
+	.body-extra-large {
+		@include font(16, 160%, normal);
+
+		@include media-breakpoint-up(lg) {
+			@include font(22, 160%, normal);
+		}
+	}
+
+	label,
+	.label {
+		@include font(12, 100%, 500);
+		text-transform: uppercase;
+	}
+
+	.button {
+		text-decoration-line: none;
+		transition          : all 0.3s ease;
+
+		@include font(14, 100%, 500);
+
+		@include media-breakpoint-up(md) {
+			@include font(16, 100%, 500);
+		}
+	}
+}

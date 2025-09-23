@@ -1,0 +1,17 @@
+{
+  "disallowBlockExpansion": true,
+  "disallowClassLiteralsBeforeIdLiterals": true,
+  "disallowDuplicateAttributes": true,
+  "disallowLegacyMixinCall": true,
+  "disallowMultipleLineBreaks": true,
+  "disallowSpacesInsideAttributeBrackets": true,
+  "disallowTemplateString": true,
+  "requireClassLiteralsBeforeAttributes": true,
+  "requireIdLiteralsBeforeAttributes": true,
+  "requireLowerCaseAttributes": true,
+  "requireLowerCaseTags": true,
+  "validateAttributeQuoteMarks": "\"",
+  "validateDivTags": true,
+  "validateIndentation": "\t",
+  "disallowTrailingSpaces": true
+}

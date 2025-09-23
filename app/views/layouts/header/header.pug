@@ -1,0 +1,98 @@
+//- Admin/Users Navigation Links
+-
+	const adminLinks = [
+		//- { href: 'dashboard-admin.html', label: 'Dashboard', active: true },
+		//- { href: 'users.html', label: 'Users' },
+		//- { href: '#.', label: 'Workflow Designer' }
+	]
+
+//- User Navigation Links
+-
+	const userLinks = [
+		{ href: 'dashboard-reviewer.html', label: 'Dashboard', active: true },
+		{ href: 'review.html', label: 'Requests' },
+		//- { href: '/reports', label: 'Setting' }
+	]
+
+//- Requester Navigation Links
+-
+	const requesterLinks = [
+		{ href: 'dashboard-requester.html', label: 'Dashboard', active: true },
+		{ href: 'request.html', label: 'Requests' },
+		//- { href: '/reports', label: 'Setting' }
+	]
+
+-
+	const revieverLinks = [
+		{ href: '/dashboard', label: 'Dashboard', active: true },
+		{ href: 'request.html', label: 'Requests' },
+		//- { href: '/reports', label: 'Setting' }
+	]
+
+
+nav.bg-white.shadow-sm
+	.mx-auto.px-4(class="sm:px-6 lg:px-8")
+		.flex.justify-between.h-16
+			.flex.items-center
+				a.navbar-brand.mr-5(href='#')
+					img(src=`${paths.img}/logo.png` class="site-logo w-[80px]" title="SNB" alt="logo")
+				.hidden(class="md:ml-6 md:flex md:space-x-8 mt-3")
+					if isAdmin
+						//- Admin Links
+						each link in adminLinks
+							a.inline-flex.items-center.px-1.pt-1.border-b-2.text-sm.font-medium(
+								href=link.href,
+								class=link.active 
+									? 'border-primary-500 text-gray-900' 
+									: 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+							)= link.label
+					else if isReviewer
+						//- Reviewer Links
+						each link in revieverLinks
+							a.inline-flex.items-center.px-1.pt-1.border-b-2.text-sm.font-medium(
+								href=link.href,
+								class=link.active 
+									? 'border-primary-500 text-gray-900' 
+									: 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+							)= link.label
+					else if isRequester
+						//- Reviewer Links
+						each link in requesterLinks
+							a.inline-flex.items-center.px-1.pt-1.border-b-2.text-sm.font-medium(
+								href=link.href,
+								class=link.active 
+									? 'border-primary-500 text-gray-900' 
+									: 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+							)= link.label
+					else
+						//- User Links	
+						each link in userLinks
+							a.inline-flex.items-center.px-1.pt-1.border-b-2.text-sm.font-medium(
+								href=link.href,
+								class=link.active 
+									? 'border-primary-500 text-gray-900' 
+									: 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+							)= link.label
+					//- a.border-primary-500.text-gray-900.inline-flex.items-center.px-1.pt-1.border-b-2.text-sm.font-medium(href="/dashboard") Dashboard
+					//- a.border-transparent.text-gray-500.inline-flex.items-center.px-1.pt-1.border-b-2.text-sm.font-medium(href="/projects" class="hover:border-gray-300 hover:text-gray-700") Projects
+					//- a.border-transparent.text-gray-500.inline-flex.items-center.px-1.pt-1.border-b-2.text-sm.font-medium(href="/reports" class="hover:border-gray-300 hover:text-gray-700") Reports
+
+			.flex.items-center
+				// Notifications
+				button.rounded-full.bg-white.p-1.text-gray-400(type="button" class="hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2")
+					span.sr-only View notifications
+					svg.h-6.w-6(xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+						path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9")
+
+				// Profile dropdown
+				.ml-3.relative
+					div
+						button#user-menu-button.flex.rounded-full.bg-white.text-sm(type="button" aria-expanded="false" aria-haspopup="true" class="focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2")
+							span.sr-only Open user menu
+							+img('dp.jpg', 'user profile', 'h-8 w-8 rounded-full', false)
+
+					// Dropdown menu (hidden by default)
+					#user-dropdown-menu.hidden.absolute.right-0.z-10.mt-2.w-48.origin-top-right.rounded-md.bg-white.py-1.shadow-lg.ring-1.ring-black.ring-opacity-5(role="menu" aria-orientation="vertical" tabindex="-1" class="focus:outline-none")
+						a.block.px-4.py-2.text-sm.text-gray-700(href="#." role="menuitem" tabindex="-1" class="hover:bg-gray-100") Your Profile
+						a.block.px-4.py-2.text-sm.text-gray-700(href="#." role="menuitem" tabindex="-1" class="hover:bg-gray-100") Settings
+						a#user-logout.block.px-4.py-2.text-sm.text-gray-700(href="Login.html" role="menuitem" tabindex="-1" class="hover:bg-gray-100") Sign out

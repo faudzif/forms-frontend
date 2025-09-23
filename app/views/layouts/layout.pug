@@ -1,0 +1,12 @@
+doctype html
+html(lang=lang dir=lang=="en" ? 'ltr' : 'rtl')
+	head
+		include layout_partials/head.pug
+	//- body(class=lang + ' ' + pageClass)
+	body(class=`${lang} bg-gray-100 ${isAdmin ? 'header-inverse' : ''}`)
+		include header/header.pug
+		main
+			block content
+		include footer/footer.pug
+		include layout_partials/scripts.pug
+		block pageScripts

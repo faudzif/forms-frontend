@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "ducfilan.pug-formatter",
+    "esbenp.prettier-vscode",
+    "mrmlnc.vscode-scss",
+    "spmeesseman.vscode-taskexplorer",
+    "donjayamanne.githistory",
+    "dbalas.vscode-html2pug",
+    "stylelint.vscode-stylelint",
+    "dbaeumer.vscode-eslint",
+    "mrmlnc.vscode-puglint"
+  ]
+}

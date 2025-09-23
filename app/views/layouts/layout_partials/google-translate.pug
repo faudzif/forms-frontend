@@ -1,0 +1,29 @@
+script.
+	function googleTranslateElementInit() {
+		new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+	}
+	document.cookie = "googtrans=/en/ar";
+
+script(src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit")
+
+#google_translate_element
+
+style(type="text/css").
+	.goog-te-banner-frame, .goog-te-gadget {
+		display: none !important;
+	}
+
+	body {
+		top: 0 !important;
+		position: static !important;
+
+	}
+
+	#goog-gt-tt {
+		display: none !important;
+	}
+
+	.goog-text-highlight {
+		background: inherit !important;
+		box-shadow: none;
+	}

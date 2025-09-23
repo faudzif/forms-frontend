@@ -1,0 +1,110 @@
+extends layouts/layout.pug
+
+block pageTitle
+	- var title_en="Add Group | SNB RDD"
+	- var title_ar="Add Group | SNB RDD"
+	- var desc_en=""
+	- var isAdmin=true
+	- var desc_ar=''
+	- var link_en=""
+	- var link_ar=""
+
+block content
+	-
+		const users = [
+			{ initials: 'KH', name: 'Khalid Hafiz', email: 'strah.j@example.com' },
+			{ initials: 'MR', name: 'Maryam Radwan', email: 'strah.j@example.com' },
+			{ initials: 'LT', name: 'Lamia Tariq', email: 'John.smith@example.com' },
+			{ initials: 'AM', name: 'Abdul Majeed', email: 'John.smith@example.com' },
+			{ initials: 'HA', name: 'Hassan Al-Omran', email: 'strah.j@example.com' },
+			{ initials: 'MF', name: 'Maha Faisal Alsanooni', email: 'strah.j@example.com' }
+		]
+
+	-
+		const sidebarData = [
+			{ link: "users.html", name:"Users & Groups" },
+			//- { link: "#", name:"test2"},
+			//- { link: "#", name:"test3"},
+		]
+
+	.flex.bg-gray-100.min-h-screen
+		+sidebar(sidebarData)
+
+		// Main Content
+		.flex-1.p-6.pb-0
+			.flex.justify-between.items-center.mb-6
+				h1.text-xl.font-semibold Add Group
+
+			div(class="bg-white p-4 rounded relative")
+				include includes/components/loader.pug
+
+				form(id="userForm" class="")
+					div(class="grid md:grid-cols-2 grid-cols-1 gap-x-5 gap-y-8")
+						.form-field
+							+formInput("Group Name", "Sharia", "text", "name", "")
+						.form-field
+							+formInput("Email", "sharia@example.com", "email", "email")
+						.form-field
+							+formSelect("Role", "Select Roll", ["Reviewer", "User", "Admin"], "")
+						.form-field
+							+formSelect("Status", "Select the status", ["Active", "In-active"], "")
+						.form-field
+							label(class="md:text-md text-base  font-medium leading-[150%] normal-case tracking-[1.5%] block pb-[10px]") Select Users
+							.relative
+								<select id="select-user" placeholder="Select a User..." autocomplete="off">
+									<option value="">Select a User...</option>
+									<option value="4">Khalid Bin Zia</option>
+									<option value="1">Hala Shaikh</option>
+									<option value="3">Badar Abu Rassa</option>
+								</select>
+								span(class="material-symbols-outlined absolute pointer-events-none right-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]") keyboard_arrow_down
+						.form-field
+							+formTextArea("Descrition", "Add description...", "", "!h-[42px]")
+
+					+btn('Add User', '', 'add', '16', 'submitBtn mt-4')
+
+	script.
+		document.addEventListener("DOMContentLoaded", function () {
+			const navLinks = document.querySelectorAll('.md\\:space-x-8 a'); 
+			const currentPage = window.location.pathname.split('/').pop(); 
+
+			navLinks.forEach(link => {
+				const href = link.getAttribute('href');
+				if (href === currentPage) {
+					// Make active
+					link.classList.remove('border-transparent', 'text-gray-500', 'hover:border-gray-300', 'hover:text-gray-700');
+					link.classList.add('border-primary-500', 'text-gray-900');
+				} else {
+					// Make inactive
+					link.classList.remove('border-primary-500', 'text-gray-900');
+					link.classList.add('border-transparent', 'text-gray-500', 'hover:border-gray-300', 'hover:text-gray-700');
+				}
+			});
+
+			const submitBtn = document.querySelector('.submitBtn');
+			const loader = document.getElementById('loaderOverlay');
+
+			submitBtn.addEventListener('click', (e) => {
+				e.preventDefault(); // Prevent actual form submission
+
+				loader.classList.remove('hidden');
+
+				setTimeout(() => {
+					loader.classList.add('hidden');
+					//- Success message
+				Toastify({
+					text: "Group has been added successfully!",
+					duration: 3000,
+					position: "center",
+					//- close: true,
+					stopOnFocus: true,
+					//- gravity: "bottom",
+					style: {
+						background: "linear-gradient(to left, #0c7560, #00b09b)" 
+					}
+				}).showToast();
+				}, 3000); // Spinner shows for 2 seconds
+			});
+
+
+		});

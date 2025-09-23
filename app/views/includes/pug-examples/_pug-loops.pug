@@ -1,0 +1,29 @@
+h1 Loops
+
+h2 Array & Object loops
+
+//- simple array loop
+ul
+	each val in [1, 2, 3, 4, 5]
+		li= val
+
+//- using index in loop
+ul
+	each val, index in ['zero', 'one', 'two']
+		li= index + ': ' + val
+
+//- object key value loop
+ul
+	each val, key in {1: 'one', 2: 'two', 3: 'three'}
+		li= key + ': ' + val
+
+h2 While loop
+
+- var n = 1;
+- var length = 5;
+ul
+	while n <= length
+		li= n++
+
+each _, i in Array(5)
+	= i

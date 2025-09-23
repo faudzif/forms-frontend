@@ -1,0 +1,97 @@
+extends layouts/layout.pug
+
+block pageTitle
+	- var title_en="Users & Groups Management | SNB RDD"
+	- var desc_en=""
+	- var title_ar="Users & Groups Management | SNB RDD"
+	- var isAdmin=true
+	- var desc_ar=''
+	- var link_en=""
+	- var link_ar=""
+
+block content
+	-
+		const users = [
+			{ initials: 'KH', name: 'Khalid Hafiz', email: 'strah.j@example.com' },
+			{ initials: 'MR', name: 'Maryam Radwan', email: 'strah.j@example.com' },
+			{ initials: 'LT', name: 'Lamia Tariq', email: 'John.smith@example.com' },
+			{ initials: 'AM', name: 'Abdul Majeed', email: 'John.smith@example.com' },
+			{ initials: 'HA', name: 'Hassan Al-Omran', email: 'strah.j@example.com' },
+			{ initials: 'MF', name: 'Maha Faisal Alsanooni', email: 'strah.j@example.com' }
+		]
+
+	-
+		const sidebarData = [
+			{ link: "users.html", name:"Users & Groups" },
+			//- { link: "#", name:"test2"},
+			//- { link: "#", name:"test3"},
+		]
+
+	.flex.bg-gray-100.min-h-screen
+		+sidebar(sidebarData)
+
+		// Main Content
+		.flex-1.p-6.pb-0
+			.flex.justify-between.items-center.mb-6
+				h1.text-xl.font-semibold Users & Groups Management
+				.flex.space-x-2
+					+btn('Add User', 'add-user.html', 'person', '18')
+					+btn('Add Group', 'add-group.html', 'group', '18')
+
+			.grid.grid-cols-1(class="lg:grid-cols-3 gap-6")
+				// Users List
+				.bg-white.p-4.rounded(class="lg:col-span-2")
+					h2.text-lg.font-semibold.mb-4 Users
+					input(type="text" placeholder="Search users..." class="w-full px-3 py-2 mb-4 border rounded")
+					.space-y-2
+						each user in ['Lara Trad', 'Khalid Hafiz', 'Maryam Radwan', 'Lamia Tariq', 'Abdul Majeed', 'Hassan Al-Omran', 'Maha Faisal Alsanooni']
+							.flex.items-center.justify-between.p-3.border.rounded
+								.flex.items-center.space-x-2
+									span(class="material-symbols-outlined text-[18px] rtl:-rotate-[100deg] mr-2") person
+									.flex.flex-col
+										span.font-medium= user
+										span.text-sm.text-gray-500 john.smith@example.com
+								.flex.items-center.space-x-2
+									button(class="text-blue-500 hover:text-blue-700" title="Edit User")
+										span(class="material-symbols-outlined text-[18px] text-green rtl:-rotate-[100deg] mr-2") edit
+									button(class="text-red hover:text-red-700" title="Delete User")
+										span(class="material-symbols-outlined text-[18px] rtl:-rotate-[100deg] mr-2") delete
+
+				// Groups List
+				.bg-white.p-4.rounded
+					h2.text-lg.font-semibold.mb-4 Groups
+					input(type="text" placeholder="Search groups..." class="w-full px-3 py-2 mb-4 border rounded")
+					each group in ['Shariah', 'Compliance']
+						.p-3.border.rounded.mb-2
+							.flex.justify-between.items-center
+								.flex.items-start.space-x-2
+									i(data-feather="layers" class="text-gray-500 mt-1")
+									.flex.flex-col
+										span.font-medium= group
+										span.text-sm.text-gray-500 1 member
+								.flex.items-center.space-x-2
+									button(class="text-gray-500 hover:text-gray-700")
+										span(class="material-symbols-outlined text-[18px] text-green rtl:-rotate-[100deg] mr-2") edit
+									button(class="text-blue-500 hover:text-blue-700")
+										i(data-feather="edit")
+									button(class="text-red hover:text-red-700")
+										span(class="material-symbols-outlined text-[18px] rtl:-rotate-[100deg] mr-2") delete
+
+	script.
+		document.addEventListener("DOMContentLoaded", function () {
+			const navLinks = document.querySelectorAll('.md\\:space-x-8 a'); 
+			const currentPage = window.location.pathname.split('/').pop(); 
+
+			navLinks.forEach(link => {
+				const href = link.getAttribute('href');
+				if (href === currentPage) {
+					// Make active
+					link.classList.remove('border-transparent', 'text-gray-500', 'hover:border-gray-300', 'hover:text-gray-700');
+					link.classList.add('border-primary-500', 'text-gray-900');
+				} else {
+					// Make inactive
+					link.classList.remove('border-primary-500', 'text-gray-900');
+					link.classList.add('border-transparent', 'text-gray-500', 'hover:border-gray-300', 'hover:text-gray-700');
+				}
+			});
+		});

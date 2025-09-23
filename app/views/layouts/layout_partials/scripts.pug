@@ -1,0 +1,8 @@
+if prod
+	script(src=`${paths.jsOutput}/app.min.js?v=${version}`)
+else
+	script(src=`${paths.jsLibs}/chart.umd.js?v=${version}`)
+	script(src=`${paths.jsLibs}/tom-select.complete.min.js?v=${version}`)
+	script(src=`${paths.jsLibs}/toastify-js.js?v=${version}`)
+	script(src=`${paths.jsOutput}/default.js?v=${version}`)
+

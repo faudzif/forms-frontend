@@ -1,0 +1,33 @@
+h1 Conditions
+
+h2 Conditional content
+-
+	var person = {
+		profession: "Developer",
+		age: 20,
+		gender: 'male'
+		//- gender: 'female'
+	}
+
+p #{person.gender === 'male' ? "He" : "She"} is a #{person.profession}, #{person.gender === 'male' ? "He" : "She"} is #{person.age} years old.
+
+h2 Conditional elements
+-
+	var user = {
+		loggedIn: true,
+		name: "Faraz",
+	}
+
+if user.loggedIn
+	h3 Welcome #{user.name}
+else
+	h3 Please log in
+
+- var values = [];
+
+if values.length
+	ul
+		each val in values
+			li= val
+else
+	p There are no values

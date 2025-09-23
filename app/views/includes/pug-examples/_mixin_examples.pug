@@ -1,0 +1,27 @@
+- var stringVar = "Variables usage example";
+- var numberVar = 40;
+- var boolVar = true;
+
+//- Direct variable to tag usage
+mixin makeHeading(text)
+	h2=text
+
+mixin makeList(elements)
+	ul
+		each val, index in elements
+			li=val
+
+mixin makeListMultiParams(...elements)
+	ul
+		each val, index in elements
+			li=val
+
+mixin makeFromObject(param)
+	if param.h2
+		h2=param.h2
+
+	if param.h3
+		h3=param.h3
+
+	if param.h4
+		h4=param.h4
