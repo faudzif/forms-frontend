@@ -1,29 +1,15 @@
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/en",
-      "destination": "/en/index.html"
-    },
-    {
-      "source": "/ar",
-      "destination": "/ar/index.html"
-    },
-    {
-      "source": "/en/(.*)",
-      "destination": "/en/$1.html"
-    },
-    {
-      "source": "/ar/(.*)",
-      "destination": "/ar/$1.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/$1.html"
+      "src": "app/**/*",
+      "use": "@vercel/static"
     }
   ],
-  "trailingSlash": false
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app/$1"
+    }
+  ]
 }
