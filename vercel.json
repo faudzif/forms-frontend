@@ -1,7 +1,15 @@
 {
   "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "app/**/*",
+      "use": "@vercel/static"
+    }
+  ],
   "routes": [
-    { "src": "/en", "dest": "/app/en/index.html" },
-    { "src": "/ar", "dest": "/app/ar/index.html" }
+    { "src": "/en", "dest": "/en/index.html" },
+    { "src": "/ar", "dest": "/ar/index.html" },
+    { "src": "/", "dest": "/index.html" }
   ]
 }
