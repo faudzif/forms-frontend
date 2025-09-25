@@ -1,0 +1,21 @@
+.ar {
+
+	// Flip Element for Arabic
+	.flip {
+		transform: scaleX(-1);
+	}
+
+	.map-container,
+	.map-container * {
+		direction: ltr;
+	}
+
+	#map-svg {
+		transform-origin: top right;
+	}
+
+	#map-info {
+		direction: ltr;
+	}
+
+}

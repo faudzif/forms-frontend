@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <title>Reviewer | SNB RDD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css?v=95">
+    <!-- Global site tag (gtag.js) - Google Analytics-->
+  </head>
+  <body class="en bg-gray-100 ">
+    <nav class="bg-white shadow-sm">
+      <div class="mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center"><a class="navbar-brand mr-5" href="#"><img class="site-logo w-[80px]" src="../assets/images/logo.png" title="SNB" alt="logo"></a>
+            <div class="hidden md:ml-6 md:flex md:space-x-8 mt-3"><a class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-primary-500 text-gray-900" href="dashboard-reviewer.html">Dashboard</a><a class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" href="review.html">Requests</a>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <!-- Notifications-->
+            <button class="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2" type="button"><span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+              </svg>
+            </button>
+            <!-- Profile dropdown-->
+            <div class="ml-3 relative">
+              <div>
+                <button class="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2" id="user-menu-button" type="button" aria-expanded="false" aria-haspopup="true"><span class="sr-only">Open user menu</span><img class="h-8 w-8 rounded-full" src="../assets/images/dp.jpg" alt="user profile">
+                </button>
+              </div>
+              <!-- Dropdown menu (hidden by default)-->
+              <div class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" id="user-dropdown-menu" role="menu" aria-orientation="vertical" tabindex="-1"><a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#." role="menuitem" tabindex="-1">Your Profile</a><a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#." role="menuitem" tabindex="-1">Settings</a><a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" id="user-logout" href="Login.html" role="menuitem" tabindex="-1">Sign out</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="flex bg-gray-100 min-h-screen">
+            <aside class="w-64 bg-white p-4 space-y-6 border-t-1 border-indigo-500 mt-2">
+              <nav class="space-y-2 text-gray-700 text-sm"><a class="block px-4 py-2 rounded bg-gray-200 font-semibold" href="review.html">Reviews</a>
+              </nav>
+            </aside>
+        <!-- Main Content-->
+        <div class="flex-1 p-6 pb-0">
+          <div class="flex justify-between items-center">
+            <h1 class="text-xl font-semibold">Reviews</h1>
+          </div>
+          <p class="mb-6">Review and manage Pending Requests</p>
+          <div class="bg-white p-4 rounded relative">
+            <!-- Loader Overlay-->
+            <div class="hidden fixed inset-0 bg-white/80 flex items-center justify-center z-50" id="loaderOverlay">
+              <div class="h-12 w-12 border-4 border-green border-t-transparent rounded-full animate-spin"></div>
+            </div>
+            <!-- Success Message-->
+            <div class="hidden text-green text-center font-medium mb-4" id="successMsg">User has been added successfully!</div>
+            <div class="flex gap-4 mb-4">
+                  <input class="border border-[#C8C8C8] rounded px-3 py-2  w-full max-md:text-sm w-[40%] " type="text" value="" name="Search By Job Number..." id="searchInput" placeholder="Search By Job Number...">
+                  <div class="relative">
+                    <select class="border border-[#C8C8C8] rounded-md px-3 py-2 w-full  appearance-none max-md:text-sm min-w-[17vw]">
+                      <option value="" disabled selected hidden>All Status</option>
+                      <option value="approved">Approved</option>
+                      <option value="pending">Pending</option>
+                      <option value="rejected">Rejected</option>
+                    </select><span class="material-symbols-outlined absolute pointer-events-none ltr:right-4 rtl:left-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]">keyboard_arrow_down</span>
+                  </div>
+                  <div class="relative">
+                    <select class="border border-[#C8C8C8] rounded-md px-3 py-2 w-full  appearance-none max-md:text-sm min-w-[17vw]">
+                      <option value="" disabled selected hidden>All Types</option>
+                      <option value="marketing">Marketing</option>
+                      <option value="publicRelation">Public Relation</option>
+                      <option value="brand">Brand</option>
+                    </select><span class="material-symbols-outlined absolute pointer-events-none ltr:right-4 rtl:left-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]">keyboard_arrow_down</span>
+                  </div>
+                  <input class="border border-[#C8C8C8] rounded px-3 py-2  w-full max-md:text-sm w-[15vw] " type="date" value="" name="mm/dd/yyyy" id="data" placeholder="mm/dd/yyyy">
+            </div>
+            <div class="bg-white shadow-sm rounded-md overflow-hidden">
+              <div class="bg-gray-50 px-6 py-3 text-sm font-semibold text-gray-600 border-b border-gray-200">Recent Requests</div>
+              <table class="w-full text-sm text-left text-gray-700">
+                <thead class="text-xs uppercase text-gray-500 bg-gray-100">
+                  <tr>
+                    <th class="px-6 py-3 font-semibold">Job Number</th>
+                    <th class="px-6 py-3 font-semibold">Request Title</th>
+                    <th class="px-6 py-3 font-semibold">Request Type</th>
+                    <th class="px-6 py-3 font-semibold">Status</th>
+                    <th class="px-6 py-3 font-semibold">Date</th>
+                    <th class="px-6 py-3 font-semibold text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="requestsTable">
+                  <tr class="bg-white border-b">
+                    <td class="px-6 py-4 font-bold text-gray-800">SNB-001</td>
+                    <td class="px-6 py-4 font-medium">Press Release for New Product</td>
+                    <td class="px-6 py-4 font-medium">Public Relation</td>
+                    <td class="px-6 py-4 font-medium text-yellow-600">Pending</td>
+                    <td class="px-6 py-4 font-medium text-gray-700">Jan 15 2025</td>
+                    <td class="px-6 py-4 text-center"><a class="text-green hover:text-lightGreen" href="#."><i class="material-symbols-outlined rtl:rotate-[270deg]" style="font-size: 24px">visibility</i></a></td>
+                  </tr>
+                  <tr class="bg-white border-b">
+                    <td class="px-6 py-4 font-bold">SNB-002</td>
+                    <td class="px-6 py-4 font-medium">Summer Sales Promotion</td>
+                    <td class="px-6 py-4 font-medium">Marketing</td>
+                    <td class="px-6 py-4 font-medium text-green">Approved</td>
+                    <td class="px-6 py-4 font-medium">Jan 10 2025</td>
+                    <td class="px-6 py-4 text-center"><a class="text-green hover:text-lightGreen" href="#."><i class="material-symbols-outlined rtl:rotate-[270deg]" style="font-size: 24px">visibility</i></a></td>
+                  </tr>
+                  <tr class="bg-white border-b">
+                    <td class="px-6 py-4 font-bold">SNB-003</td>
+                    <td class="px-6 py-4 font-medium">Rebranding Initiative</td>
+                    <td class="px-6 py-4 font-medium">Brand</td>
+                    <td class="px-6 py-4 font-medium text-red-600">Rejected</td>
+                    <td class="px-6 py-4 font-medium">Jan 5, 2025</td>
+                    <td class="px-6 py-4 text-center"><a class="text-green hover:text-lightGreen" href="review-request.html"><i class="material-symbols-outlined rtl:rotate-[270deg]" style="font-size: 24px">visibility</i></a></td>
+                  </tr>
+                  <tr id="noResultsRow" style="display: none">
+                    <td class="text-center text-gray-500 py-4" colspan="6">No results found.</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="px-6 py-2 text-sm text-gray-500 bg-gray-50 border-t border-gray-200">Showing 1-3 of 12 rows</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        	const navLinks = document.querySelectorAll('.md\\:space-x-8 a'); 
+        	const currentPage = window.location.pathname.split('/').pop(); 
+        
+        	navLinks.forEach(link => {
+        		const href = link.getAttribute('href');
+        		if (href === currentPage) {
+        			// Make active
+        			link.classList.remove('border-transparent', 'text-gray-500', 'hover:border-gray-300', 'hover:text-gray-700');
+        			link.classList.add('border-primary-500', 'text-gray-900');
+        		} else {
+        			// Make inactive
+        			link.classList.remove('border-primary-500', 'text-gray-900');
+        			link.classList.add('border-transparent', 'text-gray-500', 'hover:border-gray-300', 'hover:text-gray-700');
+        		}
+        	});
+        });
+        document.getElementById("searchInput").addEventListener("input", function () {
+        	const filter = this.value.toUpperCase();
+        	const rows = document.querySelectorAll("#requestsTable tr:not(#noResultsRow)");
+        	const noResultsRow = document.getElementById("noResultsRow");
+        	let visibleCount = 0;
+        
+        	rows.forEach(row => {
+        		const jobNumberCell = row.cells[0]; // First cell: Job Number
+        		const jobNumber = jobNumberCell.textContent || jobNumberCell.innerText;
+        
+        		if (jobNumber.toUpperCase().indexOf(filter) > -1) {
+        			row.style.display = "";
+        			visibleCount++;
+        		} else {
+        			row.style.display = "none";
+        		}
+        	});
+        
+        	// Show or hide the "No results found" row
+        	noResultsRow.style.display = visibleCount === 0 ? "" : "none";
+        });
+      </script>
+    </main><footer class="footer footer--user px-3 mt-4 text-center">
+<p>2025 SNB Worktlow Management System. Al rights reserved.</p>
+</footer>
+    <script src="../assets/js/lib/chart.umd.js?v=95"></script>
+    <script src="../assets/js/lib/tom-select.complete.min.js?v=95"></script>
+    <script src="../assets/js/lib/toastify-js.js?v=95"></script>
+    <script src="../assets/js/build/default.js?v=95"></script>
+  </body>
+</html>

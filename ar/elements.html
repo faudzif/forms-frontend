@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <title>From Builder | SNB RDD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style-ar.css?v=95">
+    <!-- Global site tag (gtag.js) - Google Analytics-->
+  </head>
+  <body class="ar bg-gray-100 header-inverse">
+    <nav class="bg-white shadow-sm">
+      <div class="mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center"><a class="navbar-brand mr-5" href="#"><img class="site-logo w-[80px]" src="../assets/images/logo.png" title="SNB" alt="logo"></a>
+            <div class="hidden md:ml-6 md:flex md:space-x-8 mt-3">
+            </div>
+          </div>
+          <div class="flex items-center">
+            <!-- Notifications-->
+            <button class="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2" type="button"><span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+              </svg>
+            </button>
+            <!-- Profile dropdown-->
+            <div class="ml-3 relative">
+              <div>
+                <button class="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2" id="user-menu-button" type="button" aria-expanded="false" aria-haspopup="true"><span class="sr-only">Open user menu</span><img class="h-8 w-8 rounded-full" src="../assets/images/dp.jpg" alt="user profile">
+                </button>
+              </div>
+              <!-- Dropdown menu (hidden by default)-->
+              <div class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" id="user-dropdown-menu" role="menu" aria-orientation="vertical" tabindex="-1"><a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#." role="menuitem" tabindex="-1">Your Profile</a><a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#." role="menuitem" tabindex="-1">Settings</a><a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" id="user-logout" href="Login.html" role="menuitem" tabindex="-1">Sign out</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="flex bg-gray-100 min-h-screen">
+            <aside class="w-64 bg-white p-4 space-y-6 border-t-1 border-indigo-500 mt-2">
+              <nav class="space-y-2 text-gray-700 text-sm"><a class="block px-4 py-2 rounded bg-gray-200 font-semibold" href="users.html">Users &amp; Groups</a>
+              </nav>
+            </aside>
+        <!-- Main Content-->
+        <div class="flex-1 p-3 pb-0">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="font-semibold m-0">Elements</h3>
+          </div>
+          <div class="flex flex-col gap-6 bg-white p-4">
+                <label class="inline-flex items-center mb-5 cursor-pointer">
+                  <input class="sr-only peer" type="checkbox" id="test">
+                  <div class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-400 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-teal-800"></div><span class="ms-3 text-sm font-medium text-gray-600">Toggle checkbox</span>
+                </label>
+          </div>
+        </div>
+      </div>
+    </main><footer class="footer footer--user px-3 mt-4 text-center">
+<p>2025 SNB Worktlow Management System. Al rights reserved.</p>
+</footer>
+    <script src="../assets/js/lib/chart.umd.js?v=95"></script>
+    <script src="../assets/js/lib/tom-select.complete.min.js?v=95"></script>
+    <script src="../assets/js/lib/toastify-js.js?v=95"></script>
+    <script src="../assets/js/build/default.js?v=95"></script>
+  </body>
+</html>
