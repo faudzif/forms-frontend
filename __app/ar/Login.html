@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <title>Login | SNB RDD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style-ar.css?v=522">
+    <!-- Global site tag (gtag.js) - Google Analytics-->
+  </head>
+  <body class="ar body-bg">
+    <main>
+      <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+          <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
+          <form id="loginForm">
+            <div class="mb-4">
+              <label class="block text-sm font-medium mb-1" for="username">Username</label>
+              <input class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="username" type="text" required>
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-medium mb-1" for="password">Password</label>
+              <input class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" id="password" type="password" required>
+            </div>
+            <button class="btn w-full bg-green text-white font-semibold py-2 px-4 rounded" type="submit">Login</button>
+            <div class="hidden mt-4 text-red-600 text-sm" id="errorMessage"></div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <script src="../assets/js/lib/chart.umd.js?v=522"></script>
+    <script src="../assets/js/lib/tom-select.complete.min.js?v=522"></script>
+    <script src="../assets/js/lib/toastify-js.js?v=522"></script>
+    <script src="../assets/js/build/default.js?v=522"></script>
+  </body>
+</html>
