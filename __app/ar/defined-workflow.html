@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <title>From Builder | SNB RDD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style-ar.css?v=522">
+    <!-- Global site tag (gtag.js) - Google Analytics-->
+  </head>
+  <body class="ar bg-gray-100 header-inverse">
+    <main>
+      <div class="flex bg-gray-100 min-h-screen">
+            <aside class="w-64 bg-white p-4 space-y-6 border-t-1 border-indigo-500 mt-2">
+              <nav class="space-y-2 text-gray-700 text-sm"><a class="block px-4 py-2 rounded bg-gray-200 font-semibold" href="users.html">Users &amp; Groups</a><a class="block px-4 py-2 rounded bg-gray-200 font-semibold" href="defined-workflow.html">Defined Workflow</a>
+              </nav>
+            </aside>
+        <!-- Main Content-->
+        <div class="flex-1 p-3 pb-0">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="font-semibold m-0">Defined Workflow</h3>
+          </div>
+          <div class="flex flex-col gap-6 bg-white p-4">
+            <div class="accordion-container">
+              <div class="flex flex-col gap-6">
+                <div class="flex gap-3 justify-end">
+                  <div class="flex gap-3">
+                        <button class="inline-flex items-center gap-1.5 relative text-white px-4 py-2 rounded font-medium text-sm no-underline font-green mt-4 w-full justify-center cursor-pointer bg-green hover:bg-lightGreen" type="submit">Edit<i class="material-symbols-outlined pointer-events-none rtl:rotate-[270deg]" style="font-size: 16px">edit</i>
+                        </button>
+                        <button class="inline-flex items-center gap-1.5 relative text-white px-4 py-2 rounded font-medium text-sm no-underline font-green mt-4 w-full justify-center cursor-pointer bg-green hover:bg-lightGreen" type="submit">Cancel<i class="material-symbols-outlined pointer-events-none rtl:rotate-[270deg]" style="font-size: 16px">cancel</i>
+                        </button>
+                  </div>
+                </div>
+                <div class="flex">
+                  <div class="flex flex-col gap-6 w-50">
+                    <div class="flex gap-6 whitespace-nowrap items-center">
+                          <label class="md:text-md text-base font-medium leading-[150%] normal-case tracking-[1.5%] block pb-0 min-w-[150px]">Request Name</label>
+                          <input class="form-control border border-[#C8C8C8] rounded px-3 py-2  w-full max-md:text-sm  " type="" name="" placeholder="" id="text" data-request="name">
+                    </div>
+                    <div class="flex gap-6 whitespace-nowrap">
+                          <label class="md:text-md text-base font-medium leading-[150%] normal-case tracking-[1.5%] block pb-0 min-w-[150px] pt-2">Description</label>
+                          <textarea class="form-control border border-[#C8C8C8] rounded px-3 py-2  w-full max-md:text-sm min-h-[120px]" placeholder="" data-request="description"></textarea>
+                    </div>
+                  </div>
+                  <div class="flex justify-end w-50">
+                    <div class="flex flex-col gap-6">
+                          <button class="inline-flex items-center gap-1.5 relative text-white px-4 py-2 rounded font-medium text-sm no-underline font-green w-full justify-center cursor-pointer bg-green hover:bg-lightGreen" type="submit">Save As Draft<i class="material-symbols-outlined pointer-events-none rtl:rotate-[270deg]" style="font-size: 16px">Draft</i>
+                          </button>
+                          <button class="inline-flex items-center gap-1.5 relative text-white px-4 py-2 rounded font-medium text-sm no-underline font-green w-full justify-center cursor-pointer bg-green hover:bg-lightGreen" type="submit">Apply<i class="material-symbols-outlined pointer-events-none rtl:rotate-[270deg]" style="font-size: 16px">check</i>
+                          </button>
+                          <button class="inline-flex items-center gap-1.5 relative text-white px-4 py-2 rounded font-medium text-sm no-underline font-green w-full justify-center cursor-pointer bg-green hover:bg-lightGreen" type="submit">Publish<i class="material-symbols-outlined pointer-events-none rtl:rotate-[270deg]" style="font-size: 16px">publish</i>
+                          </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-6 bg-white p-4 mt-5"><div id="accordion-group" class="w-full mx-auto space-y-3">
+<div class="border  overflow-hidden">
+<button class="accordion-toggle w-full flex items-center justify-between px-3 py-3 text-left bg-gray-100 hover:bg-gray-200 text-sm font-medium text-gray-800" aria-expanded="false">
+<span> Form Designer</span>
+<svg class="accordion-icon w-4 h-4 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+</svg>
+</button>
+<div class="accordion-content max-h-0 overflow-hidden transition-all duration-300 bg-white px-3">
+<div class="py-4 text-sm text-gray-600">
+            <This>is the content of section 1.</This></div>
+</div>
+</div>
+<div class="border  overflow-hidden">
+<button class="accordion-toggle w-full flex items-center justify-between px-3 py-3 text-left bg-gray-100 hover:bg-gray-200 text-sm font-medium text-gray-800" aria-expanded="false">
+<span>Defined Workflow</span>
+<svg class="accordion-icon w-4 h-4 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+</svg>
+</button>
+<div class="accordion-content max-h-0 overflow-hidden transition-all duration-300 bg-white px-3">
+<div class="py-4 text-sm text-gray-600">
+            <div class="p-2">
+              <div class="flex justify-end">
+                    <button class="inline-flex items-center gap-1.5 relative text-white px-4 py-2 rounded font-medium text-sm no-underline font-green mt-4 justify-center cursor-pointer bg-green hover:bg-lightGreen" type="submit">Add Conditions<i class="material-symbols-outlined pointer-events-none rtl:rotate-[270deg]" style="font-size: 16px">add</i>
+                    </button>
+              </div>
+              <div class="flex flex-col gap-6"> 
+                <div class="flex gap-6  whitespace-nowrap  w-100">
+                  <div class="flex flex-col gap-6 w-50"> 
+                    <div class="flex gap-6  items-center">
+                          <label class="md:text-md text-base font-medium leading-[150%] normal-case tracking-[1.5%] block pb-0 min-w-[150px]">Flow Name</label>
+                          <input class="form-control border border-[#C8C8C8] rounded px-3 py-2  w-full max-md:text-sm  " type="" name="" placeholder="" id="text" data-request="name">
+                    </div>
+                    <div class="flex gap-6  items-center">
+                          <label class="md:text-md text-base font-medium leading-[150%] normal-case tracking-[1.5%] block pb-0 min-w-[150px]">Step Name</label>
+                          <input class="form-control border border-[#C8C8C8] rounded px-3 py-2  w-full max-md:text-sm  " type="" name="" placeholder="" id="text" data-request="name">
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-6 w-50 items-start mt-3">
+                        <label class="inline-flex items-center mb-5 cursor-pointer">
+                          <input class="sr-only peer" type="checkbox" id="test">
+                          <div class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-400 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-teal-800"></div><span class="ms-3 text-sm font-medium text-gray-600">Set as Open Workflow</span>
+                        </label>
+                  </div>
+                </div>
+                <div class="flex gap-6 items-center  whitespace-nowrap w-100">
+                  <div class="w-50 flex gap-6 items-center">
+                        <label class="md:text-md text-base font-medium leading-[150%] normal-case tracking-[1.5%] block pb-0 min-w-[150px]">Flow Name</label>
+                        <input class="form-control border border-[#C8C8C8] rounded px-3 py-2  w-full max-md:text-sm  " type="" name="" placeholder="" id="text" data-request="name">
+                  </div>
+                  <div class="w-50">
+                        <button class="inline-flex items-center gap-1.5 relative text-white px-4 py-2 rounded font-medium text-sm no-underline font-green justify-center cursor-pointer bg-green hover:bg-lightGreen" type="submit">+ Add New User<i class="material-symbols-outlined pointer-events-none rtl:rotate-[270deg]" style="font-size: 16px">add</i>
+                        </button>
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-6 mt-5">
+                <div class="p-4 bg-gray-100 w-50">
+                  <h4>Approval Case</h4>
+                  <div class="flex flex-col items-center gap-3">
+                        <button class="inline-flex items-center gap-1.5 relative text-white px-4 py-2 rounded font-medium text-sm no-underline font-green mt-4 justify-center cursor-pointer bg-green hover:bg-lightGreen" type="submit">Add Conditions<i class="material-symbols-outlined pointer-events-none rtl:rotate-[270deg]" style="font-size: 16px">add</i>
+                        </button>OR
+                        <label class="inline-flex items-center mb-5 cursor-pointer">
+                          <input class="sr-only peer" type="checkbox" id="test">
+                          <div class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-400 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-teal-800"></div><span class="ms-3 text-sm font-medium text-gray-600">Mark request as complete &amp; notify stakeholders</span>
+                        </label>
+                  </div>
+                  <div class="flex gap-6  items-center">
+                    <label class="md:text-md text-base min-w-[100px] font-medium leading-[150%] normal-case tracking-[1.5%] block">Notify</label>
+                    <div class="relative w-100"><select class="select-single" placeholder="Head of Brand" autocomplete="off">
+<option value="">Head of Brand</option>
+<option value="4">Khalid Bin Zia</option>
+<option value="1">Hala Shaikh</option>
+<option value="3">Badar Abu Rassa</option>
+</select><span class="material-symbols-outlined absolute pointer-events-none right-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]">keyboard_arrow_down</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-4 bg-gray-100 w-50">
+                  <h4>Rejection Case</h4>
+                  <div class="flex flex-col gap-6 mt-4">
+                    <div class="flex gap-6  items-center">
+                      <label class="md:text-md text-base min-w-[100px] font-medium leading-[150%] normal-case tracking-[1.5%] block">Reassign</label>
+                      <div class="relative w-100"><select class="select-single" placeholder="Head of Brand" autocomplete="off">
+<option value="">Head of Brand</option>
+<option value="4">Khalid Bin Zia</option>
+<option value="1">Hala Shaikh</option>
+<option value="3">Badar Abu Rassa</option>
+</select><span class="material-symbols-outlined absolute pointer-events-none right-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]">keyboard_arrow_down</span>
+                      </div>
+                    </div>
+                    <div class="flex gap-6  items-center">
+                      <label class="md:text-md text-base min-w-[100px] font-medium leading-[150%] normal-case tracking-[1.5%] block">Notify</label>
+                      <div class="relative w-100"><select class="select-single" placeholder="Head of Brand" autocomplete="off">
+<option value="">Head of Brand</option>
+<option value="4">Khalid Bin Zia</option>
+<option value="1">Hala Shaikh</option>
+<option value="3">Badar Abu Rassa</option>
+</select><span class="material-symbols-outlined absolute pointer-events-none right-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]">keyboard_arrow_down</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div></div>
+</div>
+</div>
+<div class="border  overflow-hidden">
+<button class="accordion-toggle w-full flex items-center justify-between px-3 py-3 text-left bg-gray-100 hover:bg-gray-200 text-sm font-medium text-gray-800" aria-expanded="false">
+<span>Workflow Name</span>
+<svg class="accordion-icon w-4 h-4 transform transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+</svg>
+</button>
+<div class="accordion-content max-h-0 overflow-hidden transition-all duration-300 bg-white px-3"><div class="py-4 text-sm text-gray-600">
+            <div class="flex flex-col gap-6 mb-4"> 
+              <div class="flex gap-6 items-center  whitespace-nowrap w-100">
+                <div class="w-50 flex gap-6 items-center">
+                      <label class="md:text-md text-base font-medium leading-[150%] normal-case tracking-[1.5%] block pb-0 min-w-[150px]">Flow Name</label>
+                      <input class="form-control border border-[#C8C8C8] rounded px-3 py-2  w-full max-md:text-sm  " type="" name="" placeholder="" id="text" data-request="name">
+                </div>
+              </div>
+            </div>
+            <div class="p-4 bg-gray-50">
+              <div class="flex justify-end"><span class="text-white rounded-full bg-red px-3 py-2 flex">Sub Form Linked</span></div>
+              <div class="flex flex-col gap-6"> 
+                <div class="flex gap-6 items-center  whitespace-nowrap w-100">
+                  <div class="w-50 flex gap-6 items-center">
+                        <label class="md:text-md text-base font-medium leading-[150%] normal-case tracking-[1.5%] block pb-0 min-w-[150px]">Step Name</label>
+                        <input class="form-control border border-[#C8C8C8] rounded px-3 py-2  w-full max-md:text-sm  " type="" name="" placeholder="" id="text" data-request="name">
+                  </div>
+                  <div class="w-50">
+                        <button class="inline-flex items-center gap-1.5 relative text-white px-4 py-2 rounded font-medium text-sm no-underline font-green justify-center cursor-pointer bg-green hover:bg-lightGreen" type="submit">+ Add New User<i class="material-symbols-outlined pointer-events-none rtl:rotate-[270deg]" style="font-size: 16px">add</i>
+                        </button>
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-6 mt-5">
+                <div class="p-4 bg-gray-100 w-50">
+                  <h4>Approval Case</h4>
+                  <div class="flex flex-col items-center gap-3">
+                        <button class="inline-flex items-center gap-1.5 relative text-white px-4 py-2 rounded font-medium text-sm no-underline font-green mt-4 justify-center cursor-pointer bg-green hover:bg-lightGreen" type="submit">Add Conditions<i class="material-symbols-outlined pointer-events-none rtl:rotate-[270deg]" style="font-size: 16px">add</i>
+                        </button>OR
+                        <label class="inline-flex items-center mb-5 cursor-pointer">
+                          <input class="sr-only peer" type="checkbox" id="test">
+                          <div class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-400 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-teal-800"></div><span class="ms-3 text-sm font-medium text-gray-600">Mark request as complete &amp; notify stakeholders</span>
+                        </label>
+                  </div>
+                  <div class="flex gap-6  items-center">
+                    <label class="md:text-md text-base min-w-[100px] font-medium leading-[150%] normal-case tracking-[1.5%] block">Notify</label>
+                    <div class="relative w-100"><select class="select-single" placeholder="Head of Brand" autocomplete="off">
+<option value="">Head of Brand</option>
+<option value="4">Khalid Bin Zia</option>
+<option value="1">Hala Shaikh</option>
+<option value="3">Badar Abu Rassa</option>
+</select><span class="material-symbols-outlined absolute pointer-events-none right-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]">keyboard_arrow_down</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="p-4 bg-gray-100 w-50">
+                  <h4>Rejection Case</h4>
+                  <div class="flex flex-col gap-6 mt-4">
+                    <div class="flex gap-6  items-center">
+                      <label class="md:text-md text-base min-w-[100px] font-medium leading-[150%] normal-case tracking-[1.5%] block">Reassign</label>
+                      <div class="relative w-100"><select class="select-single" placeholder="Head of Brand" autocomplete="off">
+<option value="">Head of Brand</option>
+<option value="4">Khalid Bin Zia</option>
+<option value="1">Hala Shaikh</option>
+<option value="3">Badar Abu Rassa</option>
+</select><span class="material-symbols-outlined absolute pointer-events-none right-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]">keyboard_arrow_down</span>
+                      </div>
+                    </div>
+                    <div class="flex gap-6  items-center">
+                      <label class="md:text-md text-base min-w-[100px] font-medium leading-[150%] normal-case tracking-[1.5%] block">Notify</label>
+                      <div class="relative w-100"><select class="select-single" placeholder="Head of Brand" autocomplete="off">
+<option value="">Head of Brand</option>
+<option value="4">Khalid Bin Zia</option>
+<option value="1">Hala Shaikh</option>
+<option value="3">Badar Abu Rassa</option>
+</select><span class="material-symbols-outlined absolute pointer-events-none right-4 bottom-[18px] w-[14px] h-[14px] text-[#B0B0B0]">keyboard_arrow_down</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div></div></div>
+</div>
+</div>
+          </div>
+        </div>
+      </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        	const navLinks = document.querySelectorAll('.md\\:space-x-8 a'); 
+        	const currentPage = window.location.pathname.split('/').pop(); 
+        
+        	navLinks.forEach(link => {
+        		const href = link.getAttribute('href');
+        		if (href === currentPage) {
+        			// Make active
+        			link.classList.remove('border-transparent', 'text-gray-500', 'hover:border-gray-300', 'hover:text-gray-700');
+        			link.classList.add('border-primary-500', 'text-gray-900');
+        		} else {
+        			// Make inactive
+        			link.classList.remove('border-primary-500', 'text-gray-900');
+        			link.classList.add('border-transparent', 'text-gray-500', 'hover:border-gray-300', 'hover:text-gray-700');
+        		}
+        	});
+        
+        });
+        document.querySelectorAll(".accordion-toggle").forEach((btn) => {
+        	btn.addEventListener("click", () => {
+        		const content = btn.nextElementSibling;
+        		const icon = btn.querySelector(".accordion-icon");
+        		const isOpen = btn.getAttribute("aria-expanded") === "true";
+        
+        		btn.setAttribute("aria-expanded", !isOpen);
+        		icon.classList.toggle("rotate-180", !isOpen);
+        
+        		if (!isOpen) {
+        			content.style.maxHeight = content.scrollHeight + "px";
+        		} else {
+        			content.style.maxHeight = null;
+        		}
+        	});
+        });
+        
+      </script>
+    </main>
+    <script src="../assets/js/lib/chart.umd.js?v=522"></script>
+    <script src="../assets/js/lib/tom-select.complete.min.js?v=522"></script>
+    <script src="../assets/js/lib/toastify-js.js?v=522"></script>
+    <script src="../assets/js/build/default.js?v=522"></script>
+    <script src="../assets/js/form-builder.js"></script>
+  </body>
+</html>
