@@ -150,7 +150,7 @@ function compilePug(prod, lang) {
 			},
 			pretty: true,
 		})).on("error", notifyModule.onError(errorFunction))
-		.pipe(dest(`${paths.app}/${lang}`))
+		.pipe(dest(`${lang}`))
 		.pipe(browserSync.stream({ once: true }));
 }
 
@@ -309,80 +309,6 @@ function server() {
 	});
 }
 
-function generateFileList(outputPath = 'app/en/index.html') {
-	return function () {
-		return src(['app/en/*.html'], { allowEmpty: true })
-			.pipe(through.obj(function (file, enc, cb) {
-				this.files = this.files || [];
-				this.files.push(path.basename(file.path));
-				cb();
-			}, function (cb) {
-				const listItems = this.files.map(f => `<li><a href="/en/${f}">${f}</a></li>`).join('\n');
-
-				const css = `
-						<style>
-						* { margin: 0; padding: 0; outline: 0; }
-						body {
-							padding: 80px 100px;
-							font: 13px "Helvetica Neue", "Lucida Grande", "Arial";
-							background: #ECE9E9 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ECE9E9));
-							background: #ECE9E9 -moz-linear-gradient(top, #fff, #ECE9E9);
-							background-repeat: no-repeat;
-							color: #555;
-							-webkit-font-smoothing: antialiased;
-						}
-						h1, h2, h3 { font-size: 22px; color: #343434; }
-						h1 em, h2 em { padding: 0 5px; font-weight: normal; }
-						h1 { font-size: 60px; }
-						h2 { margin-top: 10px; }
-						h3 { margin: 5px 0 10px 0; padding-bottom: 5px; border-bottom: 1px solid #eee; font-size: 18px; }
-						ul li { list-style: none; }
-						ul li:hover { cursor: pointer; color: #2e2e2e; }
-						ul li .path { padding-left: 5px; font-weight: bold; }
-						ul li .line { padding-right: 5px; font-style: italic; }
-						ul li:first-child .path { padding-left: 0; }
-						p { line-height: 1.5; }
-						a { color: #555; text-decoration: none; }
-						a:hover { color: #303030; }
-						#stacktrace { margin-top: 15px; }
-						.directory h1 { margin-bottom: 15px; font-size: 18px; }
-						ul#files { width: 100%; height: 100%; overflow: hidden; }
-						ul#files li { float: left; width: 30%; line-height: 25px; margin: 1px; }
-						ul#files li a {
-							display: block; height: 25px; border: 1px solid transparent;
-							border-radius: 5px; overflow: hidden; white-space: nowrap;
-						}
-						ul#files li a:focus,
-						ul#files li a:hover {
-							background: rgba(255,255,255,0.65);
-							border: 1px solid #ececec;
-						}
-						ul#files li a.highlight {
-							transition: background .4s ease-in-out;
-							background: #ffff4f; border-color: #E9DC51;
-						}
-						</style>`;
-
-				const html = `
-						<!DOCTYPE html>
-						<html>
-						<head>
-						<meta charset="UTF-8">
-						<title>File List</title>
-						${css}
-						</head>
-						<body>
-						<ul id="files">${listItems}</ul>
-						</body>
-						</html>`;
-
-				fs.writeFileSync(outputPath, html);
-				console.log("🚀 ~ html:", html);
-				cb();
-			}));
-	};
-}
-
 
 // private tasks
 // const pugDev = parallel(pugDevEn); // disable ar to decrease processing time
@@ -392,7 +318,6 @@ const jsDev = series(jsBabel);
 const jsProd = series(jsBabel, jsConcat, jsMinify);
 const sassDev = series(sass, rtlcss);
 const sassProd = series(sass, rtlcss, csso);
-const jsIndex = series(generateFileList);
 
 // public tasks
 exports.imageMinification = imageMinification;
@@ -400,9 +325,8 @@ exports.cleanAll = parallel(clean.cleanHtml, clean.cleanCss, clean.cleanJs, clea
 exports.watchAll = parallel(watchPug, watchSass, watchJs, watchSprites);
 exports.runDev = series(parallel(exports.cleanAll, sprite), parallel(pugDev, sassDev, jsDev));
 exports.runProd = series(parallel(exports.cleanAll, sprite), parallel(pugProd, sassProd, jsProd));
-exports.startDev = series(exports.runDev, generateFileList(), parallel(server, exports.watchAll));
+exports.startDev = series(exports.runDev, parallel(server, exports.watchAll));
 exports.packageDev = series(exports.runDev, dist, packageTask, clean.cleanDist);
 exports.packageProd = series(exports.runProd, dist, packageTask, clean.cleanDist);
 exports.packageToServer = series(exports.runProd, dist, packageServer, clean.cleanDist);
 exports.default = exports.startDev;
-exports.generateIndex = generateFileList();
