@@ -1,1 +1,124 @@
-[{"id":"dcb938ef-1552-4f09-ae38-0220b48a1578","type":"textField","label":{"en":"Request Title: en 1","ar":"Request Title: ar"},"placeholder":{"en":"Placeholder Text - EN 1","ar":"Placeholder Text - AR"},"tooltip":{"en":"Tooltip en","ar":"tooltip ar"},"validationConfig":{"min":5,"max":10,"required":false,"regex":"/^[a-zA-Zs]{2,50}$/","regexCustom":null},"validationMessage":{"en":"name validation en","ar":"name validation ar"}},{"id":"7ca92661-a96f-4236-b088-f09444334f89","type":"textArea","label":{"en":"request en 1","ar":"request ar"},"placeholder":{"en":"Request Description en","ar":"Request Description ar"},"tooltip":{"en":"tooltip en","ar":"tooltip ar"},"validationConfig":{"required":true,"min":5,"max":10},"validationMessage":{"en":"This is required","ar":"message ar"}},{"id":"deccba31-03a5-4ccc-9436-30bcdc0d3690","type":"dropDown","label":{"en":"Selecct the colors en","ar":"Selecct the colors ar"},"placeholder":{"en":"Services Related to","ar":"Services Related to"},"tooltip":{"en":"Placeholder Text - EN","ar":"Placeholder Text - AR"},"validationConfig":{"required":true},"items":[{"key":"12","value":{"en":"12","ar":"12"}},{"key":"2","value":{"en":"2","ar":"2"}},{"key":"3","value":{"en":"3","ar":"3"}}]},{"id":"966f95d9-e074-478a-80ee-05de0017d894","type":"radio","label":{"en":"Selecct the colors","ar":"Selecct the colors"},"tooltip":{"en":"Placeholder Text - EN","ar":"Placeholder Text - EN"},"validationConfig":{"required":true},"radioName":"radio-c61ea4c3-1995-4208-a103-5fadd9f23fb3","items":[{"key":"2","label":{"en":"2","ar":"2"}},{"key":"4","label":{"en":"4","ar":"4"}}]},{"id":"09d6b659-fa6e-44cf-939b-a12ef32eee03","type":"checkBoxes","label":{"en":"Selecct the colors","ar":"Selecct the colors"},"tooltip":{"en":"tooltip en","ar":"tooltip ar"},"validationConfig":{"required":true,"minSelect":1,"maxSelect":5},"radioName":"checkBoxes-dc5cd714-094a-46d4-bb12-99201675a83b","items":[{"key":"1","label":{"en":"1","ar":"1"}},{"key":"2","label":{"en":"2","ar":"2"}}]},{"id":"08ac663b-da03-439e-bb43-d354bbec29af","type":"datePicker","label":{"en":"Expected Launch Data: ","ar":"Expected Launch Data: "},"tooltip":{"en":"tooltip en","ar":"tooltip ar"},"validationConfig":{"required":true}},{"id":"a49e2027-feb7-4dd0-a864-0ddd7bc254d9","type":"fileAttachment","label":{"en":"Upload files","ar":"Upload files"},"attachmentButton":{"en":"up55","ar":"55"},"tooltip":{"en":"tooltip en","ar":"tooltip ar"},"validationConfig":{"required":true,"maxFiles":5,"maxFileSizeMB":10,"extensions":["docx","pdf","jpg"]}},{"id":"6b967409-f89e-4c7f-bfc8-e61d191d2738","type":"heading","heading":{"en":"How are you 555","ar":"sadf","tag":""}},{"id":"13465ea7-578a-45ad-8691-df6c49325a64","type":"submitButton","submitButton":{"en":"Submit","ar":"Submit"},"tooltip":{"en":"Placeholder Text - EN","ar":"Placeholder Text - EN"}},{"id":"7f4d82fa-ee94-48e4-9eb8-fc853a5f175d","type":"cancelButton","cancelButton":{"en":"Cancel","ar":"Cancel"},"tooltip":{"en":"Placeholder Text - EN","ar":"Placeholder Text - EN"}},{"id":"388b40ed-27ea-4d7e-842b-5ca36e99e083","type":"consentCheckbox","consent":{"text":{"en":"how are you","ar":"how are you"},"link":{"text":{"en":"are","ar":"are"},"url":{"en":"https://www.google.com/","ar":"https://www.google.com/"}}},"validationConfig":{"required":true}}]
+[
+  {
+    "id": "dcb938ef-1552-4f09-ae38-0220b48a1578",
+    "type": "textField",
+    "label": { "en": "Request Title: en 1", "ar": "Request Title: ar" },
+    "placeholder": {
+      "en": "Placeholder Text - EN 1",
+      "ar": "Placeholder Text - AR"
+    },
+    "tooltip": { "en": "Tooltip en", "ar": "tooltip ar" },
+    "validationConfig": {
+      "min": 5,
+      "max": 10,
+      "required": false,
+      "regex": "/^[a-zA-Zs]{2,50}$/",
+      "regexCustom": null
+    },
+    "validationMessage": {
+      "en": "name validation en",
+      "ar": "name validation ar"
+    }
+  },
+  {
+    "id": "7ca92661-a96f-4236-b088-f09444334f89",
+    "type": "textArea",
+    "label": { "en": "request en 1", "ar": "request ar" },
+    "placeholder": {
+      "en": "Request Description en",
+      "ar": "Request Description ar"
+    },
+    "tooltip": { "en": "tooltip en", "ar": "tooltip ar" },
+    "validationConfig": { "required": true, "min": 5, "max": 10 },
+    "validationMessage": { "en": "This is required", "ar": "message ar" }
+  },
+  {
+    "id": "deccba31-03a5-4ccc-9436-30bcdc0d3690",
+    "type": "dropDown",
+    "label": { "en": "Selecct the colors en", "ar": "Selecct the colors ar" },
+    "placeholder": { "en": "Services Related to", "ar": "Services Related to" },
+    "tooltip": { "en": "Placeholder Text - EN", "ar": "Placeholder Text - AR" },
+    "validationConfig": { "required": true },
+    "items": [
+      { "key": "12", "value": { "en": "12", "ar": "12" } },
+      { "key": "2", "value": { "en": "2", "ar": "2" } },
+      { "key": "3", "value": { "en": "3", "ar": "3" } }
+    ]
+  },
+  {
+    "id": "966f95d9-e074-478a-80ee-05de0017d894",
+    "type": "radio",
+    "label": { "en": "Selecct the colors", "ar": "Selecct the colors" },
+    "tooltip": { "en": "Placeholder Text - EN", "ar": "Placeholder Text - EN" },
+    "validationConfig": { "required": true },
+    "radioName": "radio-c61ea4c3-1995-4208-a103-5fadd9f23fb3",
+    "items": [
+      { "key": "2", "label": { "en": "2", "ar": "2" } },
+      { "key": "4", "label": { "en": "4", "ar": "4" } }
+    ]
+  },
+  {
+    "id": "09d6b659-fa6e-44cf-939b-a12ef32eee03",
+    "type": "checkBoxes",
+    "label": { "en": "Selecct the colors", "ar": "Selecct the colors" },
+    "tooltip": { "en": "tooltip en", "ar": "tooltip ar" },
+    "validationConfig": { "required": true, "minSelect": 1, "maxSelect": 5 },
+    "radioName": "checkBoxes-dc5cd714-094a-46d4-bb12-99201675a83b",
+    "items": [
+      { "key": "1", "label": { "en": "1", "ar": "1" } },
+      { "key": "2", "label": { "en": "2", "ar": "2" } }
+    ]
+  },
+  {
+    "id": "08ac663b-da03-439e-bb43-d354bbec29af",
+    "type": "datePicker",
+    "label": { "en": "Expected Launch Data: ", "ar": "Expected Launch Data: " },
+    "tooltip": { "en": "tooltip en", "ar": "tooltip ar" },
+    "validationConfig": { "required": true }
+  },
+  {
+    "id": "a49e2027-feb7-4dd0-a864-0ddd7bc254d9",
+    "type": "fileAttachment",
+    "label": { "en": "Upload files", "ar": "Upload files" },
+    "attachmentButton": { "en": "up55", "ar": "55" },
+    "tooltip": { "en": "tooltip en", "ar": "tooltip ar" },
+    "validationConfig": {
+      "required": true,
+      "maxFiles": 5,
+      "maxFileSizeMB": 10,
+      "extensions": ["docx", "pdf", "jpg"]
+    }
+  },
+  {
+    "id": "6b967409-f89e-4c7f-bfc8-e61d191d2738",
+    "type": "heading",
+    "heading": { "en": "How are you 555", "ar": "sadf", "tag": "" }
+  },
+  {
+    "id": "13465ea7-578a-45ad-8691-df6c49325a64",
+    "type": "submitButton",
+    "submitButton": { "en": "Submit", "ar": "Submit" },
+    "tooltip": { "en": "Placeholder Text - EN", "ar": "Placeholder Text - EN" }
+  },
+  {
+    "id": "7f4d82fa-ee94-48e4-9eb8-fc853a5f175d",
+    "type": "cancelButton",
+    "cancelButton": { "en": "Cancel", "ar": "Cancel" },
+    "tooltip": { "en": "Placeholder Text - EN", "ar": "Placeholder Text - EN" }
+  },
+  {
+    "id": "388b40ed-27ea-4d7e-842b-5ca36e99e083",
+    "type": "consentCheckbox",
+    "consent": {
+      "text": { "en": "how are you", "ar": "how are you" },
+      "link": {
+        "text": { "en": "are", "ar": "are" },
+        "url": {
+          "en": "https://www.google.com/",
+          "ar": "https://www.google.com/"
+        }
+      }
+    },
+    "validationConfig": { "required": true }
+  }
+]
